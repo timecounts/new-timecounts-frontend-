@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as ActionCreators from '../../../application/actions'
 import * as yup from 'yup'
@@ -15,6 +15,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 
 const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }) => {
 
+    const history = useHistory()
     const [signWithEmail, setSignWithEmail] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
     const [email, setEmail] = useState('')
@@ -41,13 +42,15 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
     const handleLogin = e => {
         e.preventDefault()
 
-        yup.string().email().validate(email).then(sanitizedEmail =>{
+        yup.string().email().validate(email).then(sanitizedEmail => {
             yup.string().validate(password).then(sanitizedPassword => {
                 login({
                     email: sanitizedEmail,
                     password: sanitizedPassword
                 })
-            }).catch(error => {
+            })
+            .then(() => history.push('/user-switch'))
+            .catch(error => {
                 alert('Enter valid Password Input.', error.message)
             })
         }).catch(error => {
@@ -74,16 +77,19 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
                     <h1>Log in</h1>
                     <form>
                         <SignupLoginButton
+                            type='Log in'
                             image={GoogleIcon}
                             social={'Google'}
                             handler={handleGoogleLogin}
                         />
                         <SignupLoginButton
+                            type='Log in'
                             image={FacebookIcon}
                             social={'Facebook'}
                             handler={handleFacebookLogin}
                         />
                         <SignupLoginButton
+                            type='Log in'
                             image={AppleIcon}
                             social={'Apple'}
                         />
@@ -91,10 +97,10 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
                         {
                             !signWithEmail ? (
                                 <div className="form-group" onClick={() => setSignWithEmail(true)}>
-                                    <Link to='#' className="email-log input-btn">
+                                    <div className="email-log input-btn">
                                         <img src={MailIcon} alt='mail icon' />
                                         <span>Log in with Email</span>
-                                    </Link>
+                                    </div>
                                 </div>
                             ) : (
                                 <>
@@ -157,7 +163,7 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
                     </form>
                     <p className="already-acc">
                         Don’t have an account? {' '}
-                        <Link to="">Sign up</Link>
+                        <Link to="/signup">Sign up</Link>
                     </p>
                     <p className="terms-text">
                         By signing up, you agree to our {' '}

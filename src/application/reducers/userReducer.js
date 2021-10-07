@@ -1,18 +1,41 @@
-import { LOGGED_USER } from '../actions/actionTypes/userType'
+import {
+    SIGNUP_REQUEST,
+    SIGNUP_SUCCESS,
+    SIGNUP_FAILURE
+
+} from '../actions/actionTypes/userType'
 
 const initialState = {
-    username: 'Deepanshu Patel'
+    loading: false,
+    message: '',
+    error: ''
 }
 
 const userReducer = (state = initialState, action) => {
     console.log('User Reducer: ', action)
     switch (action.type) {
-        case LOGGED_USER: return {
-            ...state,
-            username: 'Cristiano Ronaldo 7'
-        }
+        case SIGNUP_REQUEST:
+            return {
+                ...state,
+                loading: true
+            }
 
-        default: return state
+        case SIGNUP_SUCCESS:
+            return {
+                loading: false,
+                message: action.payload,
+                error: ''
+            }
+
+        case SIGNUP_FAILURE:
+            return {
+                loading: false,
+                message: '',
+                error: action.payload
+            }
+
+        default:
+            return state
     }
 }
 
