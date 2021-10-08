@@ -1,3 +1,5 @@
+import SocialLogin from "react-social-login";
+
 const SignupLoginButton = ({ image, social, handler }) => {
     return (
         <div className="form-group" onClick={handler} style={{ cursor: 'pointer' }}>

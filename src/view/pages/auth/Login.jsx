@@ -7,6 +7,8 @@ import SignupLoginButton from '../../components/SignupLoginButton'
 import IconButton from '@mui/material/IconButton'
 
 import GoogleIcon from '../../assets/images/icon-google.svg'
+import SocialButton from "../../components/SocialButton";
+
 import FacebookIcon from '../../assets/images/icon-fb-colorful.svg'
 import AppleIcon from '../../assets/images/icon-apple.svg'
 import MailIcon from '../../assets/images/icon-mail.svg'
@@ -55,16 +57,18 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
         })
     }
 
-    const handleGoogleLogin = e => {
-        e.preventDefault()
+    const handleGoogleLogin = (response) => {
 
-        googleLogin()
+        googleLogin(response)
     }
 
-    const handleFacebookLogin = e => {
-        e.preventDefault()
+    const handleFacebookLogin = (response) => {
 
-        facebookLogin()
+        facebookLogin(response)
+    }
+
+    const handleSocialLoginFailure = (error) => {
+        console.log(error)
     }
 
     return (
@@ -72,17 +76,31 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
             <div className="container">
                 <div className="sw-content">
                     <h1>Log in</h1>
+                    <SocialButton 
+                        provider="google"
+                        appId="658889701022-vkbqi7g6jcaj14uppe0g34vpaipnpp1b.apps.googleusercontent.com"
+                        onLoginSuccess={handleGoogleLogin}
+                        onLoginFailure={handleSocialLoginFailure}
+                    >
+                        <div className={`Google-log input-btn`}>
+                            <img src={GoogleIcon} alt={`Google Icon`} />
+                            <span>Sign in with Google</span>
+                        </div>
+                    </SocialButton>
+
+                    <SocialButton 
+                        provider="facebook"
+                        appId="156007886613791"
+                        onLoginSuccess={handleFacebookLogin}
+                        onLoginFailure={handleSocialLoginFailure}
+                    >
+                        <div className={`Facebook-log input-btn`}>
+                            <img src={FacebookIcon} alt={`Facebook Icon`} />
+                            <span>Sign in with Facebook</span>
+                        </div>
+                    </SocialButton>
+
                     <form>
-                        <SignupLoginButton
-                            image={GoogleIcon}
-                            social={'Google'}
-                            handler={handleGoogleLogin}
-                        />
-                        <SignupLoginButton
-                            image={FacebookIcon}
-                            social={'Facebook'}
-                            handler={handleFacebookLogin}
-                        />
                         <SignupLoginButton
                             image={AppleIcon}
                             social={'Apple'}

@@ -1,17 +1,8 @@
 import api from '../utils/axios'
 
 const authService = {
-    googleAuth: () => api.get('auth/google', {
-        proxy: {
-            host: 'localhost',
-            port: 5000
-        }
-    }),
-    facebookAuth: () => api.get('auth/facebook', {
-        headers: {
-            'Access-Control-Allow-Origin': 'http://localhost:3000'
-        }
-    }),
+    googleAuth: (payload) => api.post('auth/google', payload),
+    facebookAuth: (payload) => api.post('auth/facebook', payload),
     login: payload => api.post('auth/login', payload)
 }
 

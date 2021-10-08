@@ -1,14 +1,17 @@
 import { useState } from 'react'
+import { connect } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import * as yup from 'yup'
 import SignupLoginButton from '../../components/SignupLoginButton'
+import SocialButton from "../../components/SocialButton";
+import * as ActionCreators from '../../../application/actions'
 
 import GoogleIcon from '../../assets/images/icon-google.svg'
 import FacebookIcon from '../../assets/images/icon-fb-colorful.svg'
 import AppleIcon from '../../assets/images/icon-apple.svg'
 import MailIcon from '../../assets/images/icon-mail.svg'
 
-const SignUp = () => {
+const SignUp = ({googleLogin, facebookLogin}) => {
 
     const history = useHistory()
     const [signWithEmail, setSignWithEmail] = useState(false)
@@ -29,22 +32,50 @@ const SignUp = () => {
         }
     }
 
+    const handleGoogleLogin = (response) => {
+
+        googleLogin(response)
+    }
+
+    const handleFacebookLogin = (response) => {
+
+        facebookLogin(response)
+    }
+
+    const handleSocialLoginFailure = (error) => {
+        console.log(error)
+    }
+
     return (
         <div className="signup-wrapper">
             <div className="container">
                 <div className="sw-content">
                     <h1>Join Timecounts</h1>
                     <form>
-                        <SignupLoginButton 
-                            image={GoogleIcon}
-                            social={'Google'}
-                            link='www.google.com'
-                        />
-                        <SignupLoginButton
-                            image={FacebookIcon}
-                            social={'Facebook'}
-                            link='www.facebook.com'
-                        />
+                    <SocialButton 
+                        provider="google"
+                        appId="658889701022-vkbqi7g6jcaj14uppe0g34vpaipnpp1b.apps.googleusercontent.com"
+                        onLoginSuccess={handleGoogleLogin}
+                        onLoginFailure={handleSocialLoginFailure}
+                    >
+                        <div className={`Google-log input-btn`}>
+                            <img src={GoogleIcon} alt={`Google Icon`} />
+                            <span>Sign up with Google</span>
+                        </div>
+                    </SocialButton>
+
+                    <SocialButton 
+                        provider="facebook"
+                        appId="156007886613791"
+                        onLoginSuccess={handleFacebookLogin}
+                        onLoginFailure={handleSocialLoginFailure}
+                    >
+                        <div className={`Facebook-log input-btn`}>
+                            <img src={FacebookIcon} alt={`Facebook Icon`} />
+                            <span>Sign up with Facebook</span>
+                        </div>
+                    </SocialButton>
+
                         <SignupLoginButton
                             image={AppleIcon}
                             social={'Apple'}
@@ -104,4 +135,20 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+const mapStateToProps = state => {
+    return {
+        userTokens: state.auth.tokens,
+        loading: state.auth.loading,
+        error: state.auth.error
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        login: requestBody => dispatch(ActionCreators.login(requestBody)),
+        googleLogin: () => dispatch(ActionCreators.googleLogin()),
+        facebookLogin: () => dispatch(ActionCreators.facebookLogin())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

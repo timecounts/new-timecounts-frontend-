@@ -42,12 +42,12 @@ export const login = requestBody => {
     }
 }
 
-export const googleLogin = () => {
+export const googleLogin = (response) => {
     return dispatch => {
         dispatch(loginRequest)
         services
             .auth
-            .googleAuth()
+            .googleAuth(response)
             .then(response => {
                 const data = response.data
                 dispatch(loginSuccess(data))
@@ -59,12 +59,12 @@ export const googleLogin = () => {
     }
 }
 
-export const facebookLogin = () => {
+export const facebookLogin = (response) => {
     return dispatch => {
         dispatch(loginRequest)
         services
             .auth
-            .facebookAuth()
+            .facebookAuth(response)
             .then(response => {
                 const data = response.data
                 dispatch(loginSuccess(data))
