@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import NotFound from './view/pages/NotFound'
@@ -29,6 +29,9 @@ function App({ userTokens, loading, error }) {
                             <Route path='/confirm-your-email/:emailId' component={ConfirmYourEmail} />
                             <Route path='/signup' component={SignUp} />
                             <Route path='/login' component={Login} />
+                            <Route exact path='/'>
+                                <Redirect to='/login' />
+                            </Route>
                             <Route component={NotFound} />
                         </Switch>
                     ) : (

@@ -7,6 +7,7 @@ import {
     LOGOUT_FAILURE
 } from './actionTypes/authType'
 import services from '../../infrastructure/services'
+import { signupRequest } from '.'
 
 export const loginRequest = () => {
     return {
@@ -45,14 +46,16 @@ export const login = requestBody => {
     }
 }
 
-export const googleLogin = () => {
+export const googleLogin = response => {
     return dispatch => {
+        console.log('From Google: ', response)
         dispatch(loginRequest)
         services
             .auth
-            .googleAuth()
-            .then(response => {
-                const data = response.data
+            .googleLogin(response)
+            .then(res => {
+                console.log('Google Response: ', res)
+                const data = res.data
                 dispatch(loginSuccess(data))
             })
             .catch(error => {
@@ -62,14 +65,51 @@ export const googleLogin = () => {
     }
 }
 
-export const facebookLogin = () => {
+export const googleSignup = response => {
+    return dispatch => {
+        dispatch(signupRequest)
+        services
+            .auth
+            .googleSignup(response)
+            .then(res => {
+                console.log('Google Response: ', res)
+                const data = res.data
+                dispatch(loginSuccess(data))
+            })
+            .catch(error => {
+                const errorMessage = error.message
+                dispatch(loginFailure(errorMessage))
+            })
+    }
+}
+
+export const facebookLogin = response => {
     return dispatch => {
         dispatch(loginRequest)
         services
             .auth
-            .facebookAuth()
-            .then(response => {
-                const data = response.data
+            .facebookLogin(response)
+            .then(res => {
+                console.log('Facebook Response: ', res)
+                const data = res.data
+                dispatch(loginSuccess(data))
+            })
+            .catch(error => {
+                const errorMessage = error.message
+                dispatch(loginFailure(errorMessage))
+            })
+    }
+}
+
+export const facebookSignup = response => {
+    return dispatch => {
+        dispatch(signupRequest)
+        services
+            .auth
+            .facebookSignup(response)
+            .then(res => {
+                console.log('Facebook Response: ', res)
+                const data = res.data
                 dispatch(loginSuccess(data))
             })
             .catch(error => {

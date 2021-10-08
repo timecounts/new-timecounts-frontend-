@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import * as ActionCreators from '../../../application/actions'
 import * as yup from 'yup'
 import SignupLoginButton from '../../components/SignupLoginButton'
+import SocialButton from '../../components/SocialButton'
 import IconButton from '@mui/material/IconButton'
 
 import GoogleIcon from '../../assets/images/icon-google.svg'
@@ -23,10 +24,9 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
     const [tokens, setTokens] = useState({})
 
     useEffect(() => {
-        setTokens({
-            accessToken: userTokens.accessToken,
-            refreshToken: userTokens.refreshToken
-        })
+        if (userTokens.success) {
+            history.push('/inactive-default')
+        }
     }, [userTokens])
 
     useEffect(() => {
@@ -34,10 +34,6 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
             console.log('Login: ', error, error.message)
         }
     }, [error])
-
-    useEffect(() => {
-        console.log('Tokens: ', tokens)
-    }, [tokens])
 
     const handleLogin = async e => {
         e.preventDefault()
@@ -59,16 +55,16 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
         }
     }
 
-    const handleGoogleLogin = e => {
-        e.preventDefault()
-
-        googleLogin()
+    const handleGoogleLogin = response => {
+        googleLogin(response)
     }
 
-    const handleFacebookLogin = e => {
-        e.preventDefault()
+    const handleFacebookLogin = response => {
+        facebookLogin(response)
+    }
 
-        facebookLogin()
+    const handleSocialLoginFailure = error => {
+        console.log(error)
     }
 
     return (
@@ -77,18 +73,31 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
                 <div className="sw-content">
                     <h1>Log in</h1>
                     <form>
-                        <SignupLoginButton
-                            type='Log in'
-                            image={GoogleIcon}
-                            social={'Google'}
-                            handler={handleGoogleLogin}
-                        />
-                        <SignupLoginButton
-                            type='Log in'
-                            image={FacebookIcon}
-                            social={'Facebook'}
-                            handler={handleFacebookLogin}
-                        />
+
+                        <SocialButton
+                            provider="google"
+                            appId="658889701022-vkbqi7g6jcaj14uppe0g34vpaipnpp1b.apps.googleusercontent.com"
+                            onLoginSuccess={handleGoogleLogin}
+                            onLoginFailure={handleSocialLoginFailure}
+                        >
+                            <div className={`Google-log input-btn`}>
+                                <img src={GoogleIcon} alt={`Google Icon`} />
+                                <span>Log in with Google</span>
+                            </div>
+                        </SocialButton>
+
+                        <SocialButton
+                            provider="facebook"
+                            appId="156007886613791"
+                            onLoginSuccess={handleFacebookLogin}
+                            onLoginFailure={handleSocialLoginFailure}
+                        >
+                            <div className={`Facebook-log input-btn`}>
+                                <img src={FacebookIcon} alt={`Facebook Icon`} />
+                                <span>Log in with Facebook</span>
+                            </div>
+                        </SocialButton>
+
                         <SignupLoginButton
                             type='Log in'
                             image={AppleIcon}
@@ -189,8 +198,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         login: requestBody => dispatch(ActionCreators.login(requestBody)),
-        googleLogin: () => dispatch(ActionCreators.googleLogin()),
-        facebookLogin: () => dispatch(ActionCreators.facebookLogin())
+        googleLogin: requestBody => dispatch(ActionCreators.googleLogin(requestBody)),
+        facebookLogin: requestBody => dispatch(ActionCreators.facebookLogin(requestBody))
     }
 }
 
