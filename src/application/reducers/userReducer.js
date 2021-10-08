@@ -1,14 +1,13 @@
 import {
     SIGNUP_REQUEST,
     SIGNUP_SUCCESS,
-    SIGNUP_FAILURE
-
+    SIGNUP_FAILURE,
 } from '../actions/actionTypes/userType'
 
 const initialState = {
-    loading: false,
-    message: '',
-    error: ''
+    signupLoading: false,
+    signupMessage: '',
+    signError: '',
 }
 
 const userReducer = (state = initialState, action) => {
@@ -17,23 +16,25 @@ const userReducer = (state = initialState, action) => {
         case SIGNUP_REQUEST:
             return {
                 ...state,
-                loading: true
+                signupLoading: true
             }
 
         case SIGNUP_SUCCESS:
             return {
-                loading: false,
-                message: action.payload,
-                error: ''
+                ...state,
+                signupLoading: false,
+                signupMessage: action.payload,
+                signError: ''
             }
 
         case SIGNUP_FAILURE:
             return {
-                loading: false,
-                message: '',
-                error: action.payload
+                ...state,
+                signupLoading: false,
+                signupMessage: '',
+                signError: action.payload
             }
-
+            
         default:
             return state
     }

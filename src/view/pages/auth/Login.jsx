@@ -39,23 +39,24 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
         console.log('Tokens: ', tokens)
     }, [tokens])
 
-    const handleLogin = e => {
+    const handleLogin = async e => {
         e.preventDefault()
 
-        yup.string().email().validate(email).then(sanitizedEmail => {
-            yup.string().validate(password).then(sanitizedPassword => {
-                login({
+        if (email !== '' && password !== '') {
+            try {
+                const sanitizedEmail = await yup.string().email().validate(email)
+                const sanitizedPassword = await yup.string().validate(password)
+
+                await login({
                     email: sanitizedEmail,
                     password: sanitizedPassword
                 })
-            })
-            .then(() => history.push('/user-switch'))
-            .catch(error => {
-                alert('Enter valid Password Input.', error.message)
-            })
-        }).catch(error => {
-            alert('Enter valid Email Input.', error.message)
-        })
+
+                history.push('/inactive-default')
+            } catch (error) {
+                console.log(error)
+            }
+        }
     }
 
     const handleGoogleLogin = e => {

@@ -1,14 +1,22 @@
 import {
     LOGIN_FAILURE,
-    LOGIN_REQUEST, 
+    LOGIN_REQUEST,
     LOGIN_SUCCESS,
+    LOGOUT_REQUEST,
+    LOGOUT_SUCCESS,
+    LOGOUT_FAILURE
 
 } from '../actions/actionTypes/authType'
 
 const initialState = {
     loading: false,
-    tokens: {},
-    error: ''
+    tokens: {
+        success: false
+    },
+    error: '',
+    logoutLoading: false,
+    logoutSuccess: false,
+    logoutError: ''
 }
 
 const authReducer = (state = initialState, action) => {
@@ -32,6 +40,31 @@ const authReducer = (state = initialState, action) => {
                 loading: false,
                 tokens: {},
                 error: action.payload
+            }
+
+        case LOGOUT_REQUEST:
+            return {
+                ...state,
+                logoutLoading: true
+            }
+
+        case LOGOUT_SUCCESS:
+            return {
+                ...state,
+                logoutLoading: false,
+                logoutSuccess: action.payload,
+                logoutError: '',
+                tokens: {
+                    success: false
+                }
+            }
+
+        case LOGOUT_FAILURE:
+            return {
+                ...state,
+                logoutLoading: false,
+                logoutSuccess: '',
+                logoutError: action.payload
             }
 
         default:

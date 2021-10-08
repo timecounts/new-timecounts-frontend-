@@ -1,10 +1,14 @@
 import {
     SIGNUP_REQUEST,
     SIGNUP_SUCCESS,
-    SIGNUP_FAILURE
+    SIGNUP_FAILURE,
+    LOGOUT_REQUEST,
+    LOGOUT_SUCCESS,
+    LOGOUT_FAILURE
 } from './actionTypes/userType'
 import services from '../../infrastructure/services'
 
+// User Signup Actions
 export const signupRequest = () => {
     return {
         type: SIGNUP_REQUEST

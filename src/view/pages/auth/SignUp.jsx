@@ -36,6 +36,8 @@ const SignUp = ({ signup, message, loading, error }) => {
                     email: sanitizedEmail,
                     password: sanitizedPassword
                 })
+
+                history.push(`/confirm-your-email/${sanitizedEmail}`)
             } catch (error) {
                 console.log(error)
             }
@@ -159,7 +161,7 @@ const SignUp = ({ signup, message, loading, error }) => {
                     </form>
                     <p className="already-acc">
                         Already have an account? {' '}
-                        <Link to="#">Log in</Link>
+                        <Link to="/login">Log in</Link>
                     </p>
                     <p className="terms-text">
                         By signing up, you agree to our {' '}
@@ -174,9 +176,9 @@ const SignUp = ({ signup, message, loading, error }) => {
 
 const mapStateToProps = state => {
     return {
-        message: state.user.message,
-        loading: state.user.loading,
-        error: state.user.error
+        message: state.user.signupMessage,
+        loading: state.user.signupLoading,
+        error: state.user.signEerror
     }
 }
 
