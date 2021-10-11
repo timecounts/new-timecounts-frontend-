@@ -3,31 +3,28 @@ import { Link, useHistory } from 'react-router-dom'
 import stringAvatar from '../../utils/stringAvatar'
 import { connect } from 'react-redux'
 import * as ActionCreators from '../../../application/actions'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import {NotificationContainer, NotificationManager} from 'react-notifications'
 
 const InactiveDefault = ({ logout, userTokens, logoutLoading, logoutSuccess, logoutError }) => {
 
     const history = useHistory()
-    const [message, setMessage] = useState('')
 
     useEffect(() => {
-        setMessage(logoutSuccess)
+        if (logoutSuccess === 'User Successfully logged out.') {
+            history.push('/login')
+        }
     }, [logoutSuccess])
 
     useEffect(() => {
-        if (message === 'User Successfully logged out.')
-            history.push('/login')
-    }, [message])
+        console.log('Logout Error: ', logoutError)
+    }, [logoutError])
 
     const handleLogout = async e => {
         e.preventDefault()
-
-        console.log(userTokens.refreshToken)
         await logout({
             refreshToken: userTokens.refreshToken
         })
-
-        history.push('/login')
     }
 
     return <>
@@ -789,6 +786,7 @@ const InactiveDefault = ({ logout, userTokens, logoutLoading, logoutSuccess, log
                 </div>
             </div>
         </div>
+        <NotificationContainer />
     </>
 }
 

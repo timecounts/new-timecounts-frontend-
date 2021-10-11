@@ -4,7 +4,11 @@ import {
     LOGIN_SUCCESS,
     LOGOUT_REQUEST,
     LOGOUT_SUCCESS,
-    LOGOUT_FAILURE
+    LOGOUT_FAILURE,
+    FLUSH_AUTH_ERROR_FROM_STATE,
+    RESEND_EMAIL_REQUEST,
+    RESEND_EMAIL_SUCCESS,
+    RESEND_EMAIL_FAILURE
 
 } from '../actions/actionTypes/authType'
 
@@ -14,9 +18,8 @@ const initialState = {
         success: false
     },
     error: '',
-    logoutLoading: false,
     logoutSuccess: false,
-    logoutError: ''
+    resendMessage: ''
 }
 
 const authReducer = (state = initialState, action) => {
@@ -25,7 +28,8 @@ const authReducer = (state = initialState, action) => {
         case LOGIN_REQUEST:
             return {
                 ...state,
-                loading: true
+                loading: true,
+                error: ''
             }
 
         case LOGIN_SUCCESS:
@@ -38,22 +42,25 @@ const authReducer = (state = initialState, action) => {
         case LOGIN_FAILURE:
             return {
                 loading: false,
-                tokens: {},
+                tokens: {
+                    success: false
+                },
                 error: action.payload
             }
 
         case LOGOUT_REQUEST:
             return {
                 ...state,
-                logoutLoading: true
+                loading: true,
+                error: ''
             }
 
         case LOGOUT_SUCCESS:
             return {
                 ...state,
-                logoutLoading: false,
+                loading: false,
                 logoutSuccess: action.payload,
-                logoutError: '',
+                error: '',
                 tokens: {
                     success: false
                 }
@@ -62,9 +69,38 @@ const authReducer = (state = initialState, action) => {
         case LOGOUT_FAILURE:
             return {
                 ...state,
-                logoutLoading: false,
-                logoutSuccess: '',
-                logoutError: action.payload
+                loading: false,
+                logoutSuccess: false,
+                error: action.payload
+            }
+
+        case FLUSH_AUTH_ERROR_FROM_STATE:
+            return {
+                ...state,
+                error: ''
+            }
+
+        case RESEND_EMAIL_REQUEST:
+            return {
+                ...state,
+                loading: true,
+                error: ''
+            }
+
+        case RESEND_EMAIL_SUCCESS: 
+            return {
+                ...state,
+                loading: false,
+                resendMessage: action.payload,
+                error: ''
+            }
+
+        case RESEND_EMAIL_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                resendMessage: '',
+                error: action.payload
             }
 
         default:

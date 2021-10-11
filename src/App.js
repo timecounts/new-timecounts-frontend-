@@ -6,7 +6,8 @@ import NotFound from './view/pages/NotFound'
 import SignUp from './view/pages/auth/SignUp'
 import Login from './view/pages/auth/Login'
 import ConfirmYourEmail from './view/pages/auth/ConfirmYourEmail'
-import InactiveDefault from './view/pages/user/InactiveDefault'
+import InactiveDefault from './view/pages/inactive/InactiveDefault'
+import ResentEmail from './view/pages/auth/ResentEmail'
 
 function App({ userTokens, loading, error }) {
 
@@ -17,15 +18,16 @@ function App({ userTokens, loading, error }) {
     }, [userTokens])
 
     useEffect(() => {
-        console.log(tokens.success?'true':'false')
+        console.log(error)
         console.log(tokens)
-    }, [tokens])
+    }, [tokens, error])
 
     return (
         <BrowserRouter>
                 {
                     !tokens.success ? (
                         <Switch>
+                            <Route path='/email-resent/:emailId' component={ResentEmail} />
                             <Route path='/confirm-your-email/:emailId' component={ConfirmYourEmail} />
                             <Route path='/signup' component={SignUp} />
                             <Route path='/login' component={Login} />

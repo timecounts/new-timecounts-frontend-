@@ -4,7 +4,11 @@ import {
     LOGIN_FAILURE,
     LOGOUT_REQUEST,
     LOGOUT_SUCCESS,
-    LOGOUT_FAILURE
+    LOGOUT_FAILURE,
+    FLUSH_AUTH_ERROR_FROM_STATE,
+    RESEND_EMAIL_REQUEST,
+    RESEND_EMAIL_SUCCESS,
+    RESEND_EMAIL_FAILURE
 } from './actionTypes/authType'
 import services from '../../infrastructure/services'
 import { signupRequest } from '.'
@@ -153,6 +157,51 @@ export const logout = requestBody => {
             .catch(error => {
                 const errorMessage = error.message
                 dispatch(logoutFailure(errorMessage))
+            })
+    }
+}
+
+// Flush errors
+export const flushAuthError = () => {
+    return {
+        type: FLUSH_AUTH_ERROR_FROM_STATE
+    }
+}
+
+// Resend email
+export const resendEmailRequest = () => {
+    return {
+        type: RESEND_EMAIL_REQUEST
+    }
+}
+
+export const resendEmailSuccess = data => {
+    return {
+        type: RESEND_EMAIL_SUCCESS,
+        payload: data
+    }
+}
+
+export const resendEmailFailure = error => {
+    return {
+        type: RESEND_EMAIL_FAILURE,
+        payload: error
+    }
+}
+
+export const resendEmail = requestBody => {
+    return dispatch => {
+        dispatch(resendEmailRequest)
+        services
+            .auth
+            .resendEmail(requestBody)
+            .then(response => {
+                const data = response.data
+                dispatch(resendEmailSuccess(data))
+            })
+            .catch(error => {
+                const errorMessage = error.message
+                dispatch(resendEmailFailure(errorMessage))
             })
     }
 }

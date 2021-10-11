@@ -3,8 +3,9 @@ import { Link, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as ActionCreators from '../../../application/actions'
 import * as yup from 'yup'
-import SignupLoginButton from '../../components/SignupLoginButton'
-import SocialButton from '../../components/SocialButton'
+import { NotificationContainer, NotificationManager } from 'react-notifications'
+import SignupLoginButton from '../../components/auth/SignupLoginButton'
+import SocialButton from '../../components/auth/SocialButton'
 import IconButton from '@mui/material/IconButton'
 
 import GoogleIcon from '../../assets/images/icon-google.svg'
@@ -14,14 +15,13 @@ import MailIcon from '../../assets/images/icon-mail.svg'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 
-const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }) => {
+const Login = ({ login, googleLogin, facebookLogin, flushAuthError, userTokens, loading, error }) => {
 
     const history = useHistory()
     const [signWithEmail, setSignWithEmail] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [tokens, setTokens] = useState({})
 
     useEffect(() => {
         if (userTokens.success) {
@@ -30,8 +30,9 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
     }, [userTokens])
 
     useEffect(() => {
-        if (error !== '') {
-            console.log('Login: ', error, error.message)
+        if (error) {
+            NotificationManager.error(error, 'Login Error', 5000)
+            flushAuthError()
         }
     }, [error])
 
@@ -40,18 +41,25 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
 
         if (email !== '' && password !== '') {
             try {
-                const sanitizedEmail = await yup.string().email().validate(email)
-                const sanitizedPassword = await yup.string().validate(password)
+                const sanitizedEmail = await yup
+                    .string()
+                    .email()
+                    .validate(email)
+                const sanitizedPassword = await yup
+                    .string()
+                    .min(8)
+                    .validate(password)
 
                 await login({
                     email: sanitizedEmail,
                     password: sanitizedPassword
                 })
-
-                history.push('/inactive-default')
             } catch (error) {
-                console.log(error)
+                NotificationManager.error(error.message, 'Login Error', 5000)
+                flushAuthError()
             }
+        } else {
+            NotificationManager.error('Your email and password field should not be empty.', 'Empty fields', 3000)
         }
     }
 
@@ -64,7 +72,10 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
     }
 
     const handleSocialLoginFailure = error => {
-        console.log(error)
+        if (error) {
+            NotificationManager.error(error, 'Login Error', 5000)
+            flushAuthError()
+        }
     }
 
     return (
@@ -129,7 +140,8 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
                                             className='input-text'
                                             style={{
                                                 display: "flex",
-                                                alignItems: "center"
+                                                alignItems: "center",
+                                                padding: "3px"
                                             }}
                                         >
                                             <input
@@ -137,7 +149,8 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
                                                 style={{
                                                     flex: "1",
                                                     border: "none",
-                                                    outlineWidth: "0"
+                                                    outlineWidth: "0",
+                                                    outline: "none"
                                                 }}
                                                 value={password}
                                                 onChange={e => setPassword(e.target.value)}
@@ -182,8 +195,9 @@ const Login = ({ login, googleLogin, facebookLogin, userTokens, loading, error }
                         <Link>Privacy Policy</Link>.
                     </p>
                 </div>
-            </div >
-        </div >
+            </div>
+            <NotificationContainer />
+        </div>
     )
 }
 
@@ -199,7 +213,8 @@ const mapDispatchToProps = dispatch => {
     return {
         login: requestBody => dispatch(ActionCreators.login(requestBody)),
         googleLogin: requestBody => dispatch(ActionCreators.googleLogin(requestBody)),
-        facebookLogin: requestBody => dispatch(ActionCreators.facebookLogin(requestBody))
+        facebookLogin: requestBody => dispatch(ActionCreators.facebookLogin(requestBody)),
+        flushAuthError: () => dispatch(ActionCreators.flushAuthError())
     }
 }
 

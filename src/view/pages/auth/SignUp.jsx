@@ -3,18 +3,20 @@ import { Link, useHistory } from 'react-router-dom'
 import * as yup from 'yup'
 import * as ActionCreators from '../../../application/actions'
 import { connect } from 'react-redux'
-import SignupLoginButton from '../../components/SignupLoginButton'
-import SocialButton from '../../components/SocialButton'
+import { NotificationContainer, NotificationManager } from 'react-notifications'
+import SignupLoginButton from '../../components/auth/SignupLoginButton'
+import SocialButton from '../../components/auth/SocialButton'
 import IconButton from '@mui/material/IconButton'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
+import PasswordStrengthBar from 'react-password-strength-bar'
 
 import GoogleIcon from '../../assets/images/icon-google.svg'
 import FacebookIcon from '../../assets/images/icon-fb-colorful.svg'
 import AppleIcon from '../../assets/images/icon-apple.svg'
 import MailIcon from '../../assets/images/icon-mail.svg'
 
-const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loading, error }) => {
+const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loading, error, flushUserError }) => {
 
     const history = useHistory()
     const [signWithEmail, setSignWithEmail] = useState(false)
@@ -22,36 +24,54 @@ const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loa
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [showPassword, setShowPassword] = useState(false)
-    const [tokens, setTokens] = useState({})
+    const regex = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})')
+
+    useEffect(() => {
+        if (message.data === 'User created successfully.') {
+            history.push(`/confirm-your-email/${email}`)
+        }
+    }, [message])
 
     const handleSignup = async e => {
         e.preventDefault()
 
         if (email !== '' && fullname !== '' && password !== '') {
             try {
-                const sanitizedFullname = await yup.string().validate(fullname)
-                const sanitizedEmail = await yup.string().email().validate(email)
-                const sanitizedPassword = await yup.string().validate(password)
+                const sanitizedFullname = await yup
+                    .string(message='Your full name must be a valid string.')
+                    .validate(fullname)
+                const sanitizedEmail = await yup
+                    .string(message='Your email must be a valid string.')
+                    .email(message='Your email must be a valid email.')
+                    .validate(email)
+                setEmail(sanitizedEmail)
+                const sanitizedPassword = await yup
+                    .string(message='Your password must be a valid string.')
+                    .min(8, message='Your password must be at least 8 characters long.')
+                    .max(60, message='Your password must be less than 60 characters.')
+                    .matches(regex, message='Your password must contain at least one uppercase, lowercase and number')
+                    .validate(password)
 
                 await signup({
                     fullName: sanitizedFullname,
                     email: sanitizedEmail,
                     password: sanitizedPassword
                 })
-
-                history.push(`/confirm-your-email/${sanitizedEmail}`)
             } catch (error) {
-                console.log(error)
+                NotificationManager.error(error.message, 'Signup Error', 5000)
+                flushUserError()
             }
+        } else {
+            NotificationManager.error('Your input fields should not be empty.', 'Empty fields', 3000)
         }
     }
 
     useEffect(() => {
-        console.log(message)
-        if (message.data === 'User created successfully.') {
-            history.push('/login')
+        if (error) {
+            NotificationManager.error(error, 'Signup Error', 5000)
+            flushUserError()
         }
-    }, [message, loading, error])
+    }, [error])
 
     useEffect(() => {
         if (userTokens.success) {
@@ -68,7 +88,10 @@ const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loa
     }
 
     const handleSocialSignupFailure = error => {
-        console.log(error)
+        if (error) {
+            NotificationManager.error(error, 'Signup Error', 5000)
+            flushUserError()
+        }
     }
 
     return (
@@ -149,7 +172,8 @@ const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loa
                                             className='input-text'
                                             style={{
                                                 display: "flex",
-                                                alignItems: "center"
+                                                alignItems: "center",
+                                                padding: "3px"
                                             }}
                                         >
                                             <input
@@ -157,7 +181,8 @@ const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loa
                                                 style={{
                                                     flex: "1",
                                                     border: "none",
-                                                    outlineWidth: "0"
+                                                    outlineWidth: "0",
+                                                    outline: "none"
                                                 }}
                                                 value={password}
                                                 onChange={e => setPassword(e.target.value)}
@@ -177,6 +202,10 @@ const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loa
                                             }
                                         </div>
                                         <label className="input-label-txt">Password</label>
+                                        <PasswordStrengthBar 
+                                            password={password} 
+                                            minLength={8}
+                                        />
                                     </div>
                                     <div className="form-group">
 
@@ -203,6 +232,7 @@ const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loa
                         <Link to="#">Privacy Policy</Link>.</p>
                 </div>
             </div>
+            <NotificationContainer />
         </div>
     )
 }
@@ -210,20 +240,18 @@ const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loa
 const mapStateToProps = state => {
     return {
         message: state.user.signupMessage,
-        loading: state.user.signupLoading,
-        error: state.user.signEerror,
-        userTokens: state.auth.tokens,
-        loading: state.auth.loading,
-        error: state.auth.error
+        loading: state.user.loading,
+        error: state.user.error,
+        userTokens: state.auth.tokens
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         signup: requestBody => dispatch(ActionCreators.signup(requestBody)),
-        login: requestBody => dispatch(ActionCreators.login(requestBody)),
         googleSignup: requestBody => dispatch(ActionCreators.googleSignup(requestBody)),
-        facebookSignup: requestBody => dispatch(ActionCreators.facebookSignup(requestBody))
+        facebookSignup: requestBody => dispatch(ActionCreators.facebookSignup(requestBody)),
+        flushUserError: () => dispatch(ActionCreators.flushUserError())
     }
 }
 

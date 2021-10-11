@@ -1,9 +1,33 @@
 import { Link, useParams, useHistory } from 'react-router-dom'
+import { connect } from 'react-redux'
+import * as ActionCreators from '../../../application/actions'
+import { NotificationContainer, NotificationManager } from 'react-notifications'
+import { useEffect } from 'react'
 
-const ConfirmYourEmail = () => {
+const ConfirmYourEmail = ({ loading, message, error, resendEmail, flushAuthError }) => {
 
     const params = useParams()
     const history = useHistory()
+
+    useEffect(() => {
+        if (error) {
+            NotificationManager.error(error.message, 'Resend Email Error', 5000)
+            flushAuthError()
+        }
+    }, [error])
+
+    useEffect(() => {
+        if (message.data === 'Mail has been resent.') history.push(`/email-resent/${params.emailId}`)
+    }, [message])
+
+    const handleResend = async e => {
+        e.preventDefault()
+
+        console.log('Hello')
+        // await resendEmail({
+        //     email: params.emailId
+        // })
+    }
 
     return <div className="signup-wrapper">
         <div className="container">
@@ -14,7 +38,7 @@ const ConfirmYourEmail = () => {
                     <span><Link to={`mailto:${params.emailId}`} className="email-link">{params.emailId}</Link></span>
                 </p>
                 <p className="already-acc">Didn’t get the email? Check your spam folder or {' '}
-                    <Link to="">resend it</Link>
+                    <Link to="#" onClick={handleResend}>resend it</Link>
                 </p>
                 <div className="form-group">
                     <button 
@@ -31,7 +55,23 @@ const ConfirmYourEmail = () => {
                 </div>
             </div>
         </div>
+        <NotificationContainer />
     </div>
 }
 
-export default ConfirmYourEmail
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading,
+        message: state.auth.resendMessage,
+        error: state.auth.error
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        resendEmail: requestBody => dispatch(ActionCreators.resendEmail(requestBody)),
+        flushAuthError: () => dispatch(ActionCreators.flushAuthError())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ConfirmYourEmail)

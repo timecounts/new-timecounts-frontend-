@@ -2,9 +2,7 @@ import {
     SIGNUP_REQUEST,
     SIGNUP_SUCCESS,
     SIGNUP_FAILURE,
-    LOGOUT_REQUEST,
-    LOGOUT_SUCCESS,
-    LOGOUT_FAILURE
+    FLUSH_USER_ERROR_FROM_STATE
 } from './actionTypes/userType'
 import services from '../../infrastructure/services'
 
@@ -26,6 +24,12 @@ export const signupFailure = error => {
     return {
         type: SIGNUP_FAILURE,
         payload: error
+    }
+}
+
+export const flushUserError = () => {
+    return {
+        type: FLUSH_USER_ERROR_FROM_STATE
     }
 }
 
