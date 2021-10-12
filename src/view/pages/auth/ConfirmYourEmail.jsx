@@ -23,10 +23,9 @@ const ConfirmYourEmail = ({ loading, message, error, resendEmail, flushAuthError
     const handleResend = async e => {
         e.preventDefault()
 
-        console.log('Hello')
-        // await resendEmail({
-        //     email: params.emailId
-        // })
+        await resendEmail({
+            email: params.emailId
+        })
     }
 
     return <div className="signup-wrapper">
@@ -35,7 +34,7 @@ const ConfirmYourEmail = ({ loading, message, error, resendEmail, flushAuthError
                 <h1>You are almost there</h1>
                 <p className="eamil-sent-text">
                     You need to click the verification link we sent to 
-                    <span><Link to={`mailto:${params.emailId}`} className="email-link">{params.emailId}</Link></span>
+                    <span><Link to='#' className="email-link">{params.emailId}</Link></span>
                 </p>
                 <p className="already-acc">Didn’t get the email? Check your spam folder or {' '}
                     <Link to="#" onClick={handleResend}>resend it</Link>

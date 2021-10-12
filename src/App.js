@@ -8,6 +8,7 @@ import Login from './view/pages/auth/Login'
 import ConfirmYourEmail from './view/pages/auth/ConfirmYourEmail'
 import InactiveDefault from './view/pages/inactive/InactiveDefault'
 import ResentEmail from './view/pages/auth/ResentEmail'
+import EmailConfirmed from './view/pages/auth/EmailConfirmed'
 
 function App({ userTokens, loading, error }) {
 
@@ -27,7 +28,8 @@ function App({ userTokens, loading, error }) {
                 {
                     !tokens.success ? (
                         <Switch>
-                            <Route path='/email-resent/:emailId' component={ResentEmail} />
+                            <Route path='/email-confirmed/:emailId' component={EmailConfirmed} />
+                            <Route path='/email-resent/:emailId/' component={ResentEmail} />
                             <Route path='/confirm-your-email/:emailId' component={ConfirmYourEmail} />
                             <Route path='/signup' component={SignUp} />
                             <Route path='/login' component={Login} />
