@@ -2,12 +2,12 @@ import {
     SIGNUP_REQUEST,
     SIGNUP_SUCCESS,
     SIGNUP_FAILURE,
-    FLUSH_USER_ERROR_FROM_STATE
+    FLUSH_USER_STATE_FROM_STATE
 } from '../actions/actionTypes/userType'
 
 const initialState = {
     loading: false,
-    signupMessage: '',
+    message: '',
     error: '',
 }
 
@@ -24,7 +24,7 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                signupMessage: action.payload,
+                message: action.payload,
                 error: ''
             }
 
@@ -32,13 +32,15 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                signupMessage: '',
+                message: '',
                 error: action.payload
             }
 
-        case FLUSH_USER_ERROR_FROM_STATE:
+        case FLUSH_USER_STATE_FROM_STATE:
             return {
                 ...state,
+                loading: false,
+                message: '',
                 error: ''
             }
             

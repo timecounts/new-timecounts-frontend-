@@ -14,7 +14,7 @@ const ResentEmail = () => {
                     <span><Link to="" className="email-link">{params.emailId}</Link></span>
                 </p>
                 <p className="already-acc">
-                    Didn’t get the email? Check your spam folder or contact the 
+                    Didn’t get the email? Check your spam folder or contact the {' '}
                     <Link to="">support center</Link>
                 </p>
                 <div className="form-group">

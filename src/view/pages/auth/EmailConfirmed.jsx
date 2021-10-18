@@ -1,9 +1,19 @@
 import { Link, useParams, useHistory } from 'react-router-dom'
+import { connect } from 'react-redux'
+import * as ActionCreators from '../../../application/actions'
 
-const EmailConfirmed = () => {
+const EmailConfirmed = ({ flushUserState, flushAuthState }) => {
 
     const params = useParams()
     const history = useHistory()
+
+    const handleClick = e => {
+        e.preventDefault()
+
+        flushUserState()
+        flushAuthState()
+        history.push('/login')
+    }
 
     return <div className="signup-wrapper">
         <div className="container">
@@ -17,11 +27,24 @@ const EmailConfirmed = () => {
                      was successfully verified.
                 </p>
                 <div className="form-group">
-                    <button type="button" className="input-submit" onClick={() => history.push('/login')}>Go back to Log in</button>
+                    <button type="button" className="input-submit" onClick={handleClick}>Go back to Log in</button>
                 </div>
             </div>
         </div>
     </div>
 }
 
-export default EmailConfirmed
+const mapStateToProps = state => {
+    return {
+
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        flushUserState: () => dispatch(ActionCreators.flushUserState()),
+        flushAuthState: () => dispatch(ActionCreators.flushAuthState())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EmailConfirmed)

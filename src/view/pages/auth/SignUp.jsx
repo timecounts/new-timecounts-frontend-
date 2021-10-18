@@ -239,7 +239,7 @@ const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loa
 
 const mapStateToProps = state => {
     return {
-        message: state.user.signupMessage,
+        message: state.user.message,
         loading: state.user.loading,
         error: state.user.error,
         userTokens: state.auth.tokens
@@ -251,7 +251,7 @@ const mapDispatchToProps = dispatch => {
         signup: requestBody => dispatch(ActionCreators.signup(requestBody)),
         googleSignup: requestBody => dispatch(ActionCreators.googleSignup(requestBody)),
         facebookSignup: requestBody => dispatch(ActionCreators.facebookSignup(requestBody)),
-        flushUserError: () => dispatch(ActionCreators.flushUserError())
+        flushUserState: () => dispatch(ActionCreators.flushUserState())
     }
 }
 

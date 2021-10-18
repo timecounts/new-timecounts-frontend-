@@ -2,7 +2,7 @@ import {
     SIGNUP_REQUEST,
     SIGNUP_SUCCESS,
     SIGNUP_FAILURE,
-    FLUSH_USER_ERROR_FROM_STATE
+    FLUSH_USER_STATE_FROM_STATE
 } from './actionTypes/userType'
 import services from '../../infrastructure/services'
 
@@ -27,9 +27,9 @@ export const signupFailure = error => {
     }
 }
 
-export const flushUserError = () => {
+export const flushUserState = () => {
     return {
-        type: FLUSH_USER_ERROR_FROM_STATE
+        type: FLUSH_USER_STATE_FROM_STATE
     }
 }
 
@@ -44,7 +44,7 @@ export const signup = requestBody => {
                 dispatch(signupSuccess(data))
             })
             .catch(error => {
-                const errorMessage = error.message
+                const errorMessage = error.response.data.message
                 dispatch(signupFailure(errorMessage))
             })
     }

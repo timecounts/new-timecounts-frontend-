@@ -2743,3 +2743,38 @@ vertical-align: top;
     display: inline-block;
 vertical-align: middle;
 }
+
+input[type=text], input[type=email] {
+      padding: 10px 20px;
+      border: 1px solid #999;
+      border-radius: 3px;
+      display: block;
+      width: 100%;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    input[type=text]:focus,
+    input[type=email]:focus {
+      border-color: #FF6F00;
+    }
+
+    input[type=radio] {
+      margin-right: 10px;
+    }
+
+
+
+
+    .text-center {
+      text-align: center;
+    }
+
+
+
+
+
+    .modal-body.is-showing {
+      display: block;
+    }

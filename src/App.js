@@ -9,6 +9,7 @@ import ConfirmYourEmail from './view/pages/auth/ConfirmYourEmail'
 import InactiveDefault from './view/pages/inactive/InactiveDefault'
 import ResentEmail from './view/pages/auth/ResentEmail'
 import EmailConfirmed from './view/pages/auth/EmailConfirmed'
+import Default from './view/pages/organization/Default'
 
 function App({ userTokens, loading, error }) {
 
@@ -40,6 +41,7 @@ function App({ userTokens, loading, error }) {
                         </Switch>
                     ) : (
                         <Switch>
+                            <Route path='/organization/creation' component={Default} />
                             <Route path='/inactive-default' component={InactiveDefault} />
                             <Route component={NotFound} />
                         </Switch>

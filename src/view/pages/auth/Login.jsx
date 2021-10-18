@@ -14,8 +14,9 @@ import AppleIcon from '../../assets/images/icon-apple.svg'
 import MailIcon from '../../assets/images/icon-mail.svg'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
+import { flushUserState } from '../../../application/actions'
 
-const Login = ({ login, googleLogin, facebookLogin, flushAuthError, userTokens, loading, error }) => {
+const Login = ({ login, googleLogin, facebookLogin, flushAuthState, userTokens, loading, error }) => {
 
     const history = useHistory()
     const [signWithEmail, setSignWithEmail] = useState(false)
@@ -32,7 +33,7 @@ const Login = ({ login, googleLogin, facebookLogin, flushAuthError, userTokens, 
     useEffect(() => {
         if (error) {
             NotificationManager.error(error, 'Login Error', 5000)
-            flushAuthError()
+            flushAuthState()
         }
     }, [error])
 
@@ -56,7 +57,7 @@ const Login = ({ login, googleLogin, facebookLogin, flushAuthError, userTokens, 
                 })
             } catch (error) {
                 NotificationManager.error(error.message, 'Login Error', 5000)
-                flushAuthError()
+                flushAuthState()
             }
         } else {
             NotificationManager.error('Your email and password field should not be empty.', 'Empty fields', 3000)
@@ -74,7 +75,7 @@ const Login = ({ login, googleLogin, facebookLogin, flushAuthError, userTokens, 
     const handleSocialLoginFailure = error => {
         if (error) {
             NotificationManager.error(error, 'Login Error', 5000)
-            flushAuthError()
+            flushAuthState()
         }
     }
 
@@ -214,7 +215,7 @@ const mapDispatchToProps = dispatch => {
         login: requestBody => dispatch(ActionCreators.login(requestBody)),
         googleLogin: requestBody => dispatch(ActionCreators.googleLogin(requestBody)),
         facebookLogin: requestBody => dispatch(ActionCreators.facebookLogin(requestBody)),
-        flushAuthError: () => dispatch(ActionCreators.flushAuthError())
+        flushAuthState: () => dispatch(ActionCreators.flushAuthState())
     }
 }
 

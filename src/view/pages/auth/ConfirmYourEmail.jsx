@@ -4,7 +4,7 @@ import * as ActionCreators from '../../../application/actions'
 import { NotificationContainer, NotificationManager } from 'react-notifications'
 import { useEffect } from 'react'
 
-const ConfirmYourEmail = ({ loading, message, error, resendEmail, flushAuthError }) => {
+const ConfirmYourEmail = ({ loading, message, error, resendEmail, flushAuthState }) => {
 
     const params = useParams()
     const history = useHistory()
@@ -12,11 +12,12 @@ const ConfirmYourEmail = ({ loading, message, error, resendEmail, flushAuthError
     useEffect(() => {
         if (error) {
             NotificationManager.error(error.message, 'Resend Email Error', 5000)
-            flushAuthError()
+            flushAuthState()
         }
     }, [error])
 
     useEffect(() => {
+        if (message === undefined) return
         if (message.data === 'Mail has been resent.') history.push(`/email-resent/${params.emailId}`)
     }, [message])
 
@@ -69,7 +70,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         resendEmail: requestBody => dispatch(ActionCreators.resendEmail(requestBody)),
-        flushAuthError: () => dispatch(ActionCreators.flushAuthError())
+        flushAuthState: () => dispatch(ActionCreators.flushAuthState())
     }
 }
 

@@ -5,7 +5,7 @@ import {
     LOGOUT_REQUEST,
     LOGOUT_SUCCESS,
     LOGOUT_FAILURE,
-    FLUSH_AUTH_ERROR_FROM_STATE,
+    FLUSH_AUTH_STATE_FROM_STATE,
     RESEND_EMAIL_REQUEST,
     RESEND_EMAIL_SUCCESS,
     RESEND_EMAIL_FAILURE
@@ -44,7 +44,7 @@ export const login = requestBody => {
                 dispatch(loginSuccess(data))
             })
             .catch(error => {
-                const errorMessage = error.message
+                const errorMessage = error.response.data.message
                 dispatch(loginFailure(errorMessage))
             })
     }
@@ -63,7 +63,7 @@ export const googleLogin = response => {
                 dispatch(loginSuccess(data))
             })
             .catch(error => {
-                const errorMessage = error.message
+                const errorMessage = error.response.data.message
                 dispatch(loginFailure(errorMessage))
             })
     }
@@ -81,7 +81,7 @@ export const googleSignup = response => {
                 dispatch(loginSuccess(data))
             })
             .catch(error => {
-                const errorMessage = error.message
+                const errorMessage = error.response.data.message
                 dispatch(loginFailure(errorMessage))
             })
     }
@@ -99,7 +99,7 @@ export const facebookLogin = response => {
                 dispatch(loginSuccess(data))
             })
             .catch(error => {
-                const errorMessage = error.message
+                const errorMessage = error.response.data.message
                 dispatch(loginFailure(errorMessage))
             })
     }
@@ -117,7 +117,7 @@ export const facebookSignup = response => {
                 dispatch(loginSuccess(data))
             })
             .catch(error => {
-                const errorMessage = error.message
+                const errorMessage = error.response.data.message
                 dispatch(loginFailure(errorMessage))
             })
     }
@@ -155,16 +155,16 @@ export const logout = requestBody => {
                 dispatch(logoutSuccess(data))
             })
             .catch(error => {
-                const errorMessage = error.message
+                const errorMessage = error.response.data.message
                 dispatch(logoutFailure(errorMessage))
             })
     }
 }
 
 // Flush errors
-export const flushAuthError = () => {
+export const flushAuthState = () => {
     return {
-        type: FLUSH_AUTH_ERROR_FROM_STATE
+        type: FLUSH_AUTH_STATE_FROM_STATE
     }
 }
 
@@ -200,7 +200,7 @@ export const resendEmail = requestBody => {
                 dispatch(resendEmailSuccess(data))
             })
             .catch(error => {
-                const errorMessage = error.message
+                const errorMessage = error.response.data.message
                 dispatch(resendEmailFailure(errorMessage))
             })
     }

@@ -5,7 +5,7 @@ import {
     LOGOUT_REQUEST,
     LOGOUT_SUCCESS,
     LOGOUT_FAILURE,
-    FLUSH_AUTH_ERROR_FROM_STATE,
+    FLUSH_AUTH_STATE_FROM_STATE,
     RESEND_EMAIL_REQUEST,
     RESEND_EMAIL_SUCCESS,
     RESEND_EMAIL_FAILURE
@@ -74,9 +74,11 @@ const authReducer = (state = initialState, action) => {
                 error: action.payload
             }
 
-        case FLUSH_AUTH_ERROR_FROM_STATE:
+        case FLUSH_AUTH_STATE_FROM_STATE:
             return {
                 ...state,
+                loading: false,
+                resendMessage: '',
                 error: ''
             }
 
