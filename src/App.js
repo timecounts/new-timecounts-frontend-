@@ -9,7 +9,9 @@ import ConfirmYourEmail from './view/pages/auth/ConfirmYourEmail'
 import InactiveDefault from './view/pages/inactive/InactiveDefault'
 import ResentEmail from './view/pages/auth/ResentEmail'
 import EmailConfirmed from './view/pages/auth/EmailConfirmed'
-import Default from './view/pages/organization/Default'
+import OrganizationCreation from './view/pages/organization/OrganizationCreation'
+import CategorySelection from './view/pages/organization/CategorySelection'
+import AreaSelection from './view/pages/organization/AreaSelection'
 
 function App({ userTokens, loading, error }) {
 
@@ -41,7 +43,9 @@ function App({ userTokens, loading, error }) {
                         </Switch>
                     ) : (
                         <Switch>
-                            <Route path='/organization/creation' component={Default} />
+                            <Route path='/organization/area' component={AreaSelection} />
+                            <Route path='/organization/category' component={CategorySelection} />
+                            <Route path='/organization/creation' component={OrganizationCreation} />
                             <Route path='/inactive-default' component={InactiveDefault} />
                             <Route component={NotFound} />
                         </Switch>

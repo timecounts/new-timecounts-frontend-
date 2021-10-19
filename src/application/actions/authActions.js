@@ -76,7 +76,6 @@ export const googleSignup = response => {
             .auth
             .googleSignup(response)
             .then(res => {
-                console.log('Google Response: ', res)
                 const data = res.data
                 dispatch(loginSuccess(data))
             })
@@ -161,7 +160,7 @@ export const logout = requestBody => {
     }
 }
 
-// Flush errors
+// Flush state
 export const flushAuthState = () => {
     return {
         type: FLUSH_AUTH_STATE_FROM_STATE
