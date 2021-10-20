@@ -12,6 +12,8 @@ import EmailConfirmed from './view/pages/auth/EmailConfirmed'
 import OrganizationCreation from './view/pages/organization/OrganizationCreation'
 import CategorySelection from './view/pages/organization/CategorySelection'
 import AreaSelection from './view/pages/organization/AreaSelection'
+import GoalSelection from './view/pages/organization/GoalSelection'
+import CreationRequestPending from './view/pages/organization/CreationRequestPending'
 
 function App({ userTokens, loading, error }) {
 
@@ -43,6 +45,8 @@ function App({ userTokens, loading, error }) {
                         </Switch>
                     ) : (
                         <Switch>
+                            <Route path='/organization/pending-creation' component={CreationRequestPending} />
+                            <Route path='/organization/goal' component={GoalSelection} />
                             <Route path='/organization/area' component={AreaSelection} />
                             <Route path='/organization/category' component={CategorySelection} />
                             <Route path='/organization/creation' component={OrganizationCreation} />

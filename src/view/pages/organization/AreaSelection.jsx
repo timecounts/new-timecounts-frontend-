@@ -4,33 +4,33 @@ import { useHistory } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar'
 import stringAvatar from '../../utils/stringAvatar'
 import { NotificationContainer, NotificationManager } from 'react-notifications'
+import * as ActionCreators from '../../../application/actions'
 
 import Logo from '../../assets/images/company.svg'
 
-const AreaSelection = ({ username }) => {
+const AreaSelection = ({ username, organizationDataStep3 }) => {
 
     const history = useHistory()
     const [notSelectedList, setNotSelectedList] = useState([
-        {
-            id: 1,
-            area: 'Cinematography'
-        }, {
-            id: 2,
-            area: 'Food'
-        }, {
-            id: 3,
-            area: 'Animals'
-        }, {
-            id: 4,
-            area: 'Arts and Culture'
-        }, {
-            id: 5,
-            area: 'Children and Youth'
-        }, {
-            id: 6,
-            area: 'Community'
-        }
+        'Cinematography',
+        'Food',
+        'Animals',
+        'Arts and Culture',
+        'Children and Youth',
+        'Community'
     ])
+    const [selectedList, setSelectedList] = useState([])
+
+    const handleNextStep = e => {
+        e.preventDefault()
+
+        if (selectedList.length !== 0) {
+            organizationDataStep3(selectedList)
+            history.push('/organization/goal')
+        } else {
+            NotificationManager.error('You must select atleast one area.', 'Selection Warning', 5000)
+        }
+    }
 
     return <div className="site-wrap">
         <div className="header-wrap">
@@ -65,11 +65,19 @@ const AreaSelection = ({ username }) => {
                                                 <div className="add-tag">
                                                     <ul>
                                                         {
-                                                            notSelectedList.map(area => (
+                                                            notSelectedList.map((area, index) => (
                                                                 <li 
-                                                                    key={area.id}
+                                                                    key={index}
+                                                                    style={{
+                                                                        margin: '5px',
+                                                                        cursor: 'pointer'
+                                                                    }}
+                                                                    onClick={e => {
+                                                                        setNotSelectedList(notSelectedList.filter((a, i) => i !== index))
+                                                                        setSelectedList([...selectedList, area])
+                                                                    }}
                                                                 >
-                                                                    {area.area}
+                                                                    {area}
                                                                 </li>
                                                             ))
                                                         }
@@ -81,10 +89,23 @@ const AreaSelection = ({ username }) => {
                                                 <h2>The areas of focus for Test Organization:</h2>
                                                 <div className="focus-tag">
                                                     <ul>
-                                                        <li>Animals</li>
-                                                        <li>Arts and Culture</li>
-                                                        <li>Children and Youth</li>
-                                                        <li>Community</li>
+                                                        {
+                                                            selectedList.map((area, index) => (
+                                                                <li
+                                                                    key={index}
+                                                                    style={{
+                                                                        margin: '5px',
+                                                                        cursor: 'pointer'
+                                                                    }}
+                                                                    onClick={e => {
+                                                                        setSelectedList(selectedList.filter((a, i) => i !== index))
+                                                                        setNotSelectedList([...notSelectedList, area])
+                                                                    }}
+                                                                >
+                                                                    {area}
+                                                                </li>
+                                                            ))
+                                                        }
                                                     </ul>
                                                 </div>
                                             </div>
@@ -92,7 +113,7 @@ const AreaSelection = ({ username }) => {
                                     </div>
                                     <div className="button-wrap fade-in">
                                         <div className=" button-alt" onClick={() => history.goBack()}>Back</div>
-                                        <div className="button">Next step</div>
+                                        <div className="button" onClick={handleNextStep}>Next Step</div>
                                     </div>
                                 </form>
                             </div>
@@ -113,7 +134,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-
+        organizationDataStep3: data => dispatch(ActionCreators.organizationDataStep3(data))
     }
 }
 
