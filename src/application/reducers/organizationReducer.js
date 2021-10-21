@@ -15,7 +15,7 @@ import {
 const initialState = {
     dataOrganizationName: '',
     dataPublicUrl: '',
-    dataCategory: [],
+    dataCategory: '',
     dataAreas: [],
     dataGoals: [],
     loading: false,
@@ -88,7 +88,7 @@ const organizationReducer = (state = initialState, action) => {
                 ...state,
                 dataOrganizationName: '',
                 dataPublicUrl: '',
-                dataCategory: [],
+                dataCategory: '',
                 dataAreas: [],
                 dataGoals: [],
                 loading: false,

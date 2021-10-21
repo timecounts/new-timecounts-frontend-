@@ -8,10 +8,10 @@ import { NotificationContainer, NotificationManager } from 'react-notifications'
 
 import Logo from '../../assets/images/company.svg'
 
-const CategorySelection = ({ username, organizationDataStep2 }) => {
+const CategorySelection = ({ username, dataCategory, organizationDataStep2 }) => {
 
     const history = useHistory()
-    const [selectedCategory, setSelectedCategory] = useState('')
+    const [selectedCategory, setSelectedCategory] = useState(dataCategory.length === 0 ? '' : dataCategory)
 
     const handleNextStep = e => {
         e.preventDefault()
@@ -153,7 +153,7 @@ const CategorySelection = ({ username, organizationDataStep2 }) => {
 
                                     <div className="button-wrap fade-in">
                                         <div className=" button-alt" onClick={() => history.goBack()}>Back</div>
-                                        <div className="button" onClick={handleNextStep}>Next step</div>
+                                        <div className="button" onClick={handleNextStep}>Next Step</div>
                                     </div>
                                 </form>
                             </div>
@@ -168,7 +168,8 @@ const CategorySelection = ({ username, organizationDataStep2 }) => {
 
 const mapStateToProps = state => {
     return {
-        username: state.auth.tokens.userData.username
+        username: state.auth.tokens.userData.username,
+        dataCategory: state.organization.dataCategory
     }
 }
 

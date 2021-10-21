@@ -16,28 +16,35 @@ const OrganizationCreation = ({
     error,
     organizationDataStep1,
     organizationUrlExist,
-    flushOrganizationState
+    flushOrganizationState,
+    dataOrganizationName,
+    dataPublicUrl
 }) => {
 
     const history = useHistory()
-    const [organizationName, setOrganizationName] = useState('')
-    const [publicUrl, setPublicUrl] = useState('')
+    const [organizationName, setOrganizationName] = useState(dataOrganizationName)
+    const [publicUrl, setPublicUrl] = useState(dataPublicUrl.length === 0 ? 'https://timecounts.org/' : dataPublicUrl)
     const [urlExist, setUrlExist] = useState(false)
 
     useEffect(() => {
-        if (successMessage?.data === 'Public Url is available to use.') history.push('/organization/category')
+        if (successMessage?.data === 'Public Url is available to use.') {
+            flushOrganizationState()
+            history.push('/organization/category')
+        }
     }, [successMessage])
 
     useEffect(() => {
-        if (error) NotificationManager.error(error, 'URL Check Error', 5000)
-        if (error.includes('already exists.')) setUrlExist(true)
-        flushOrganizationState()
+        if (error !== '') {
+            if (error) NotificationManager.error(error, 'URL Check Error', 5000)
+            if (error.includes('already exists.')) setUrlExist(true)
+            flushOrganizationState()
+        }
     }, [error])
 
     const handleClick = async e => {
         e.preventDefault()
 
-        if (organizationName !== '' && publicUrl !== '') {
+        if (organizationName !== '' && publicUrl.length > 27) {
             try {
                 const sanitizedOrganizationName = await yup
                     .string()
@@ -62,8 +69,16 @@ const OrganizationCreation = ({
                     })
                 }
             } catch (error) {
-                NotificationManager.error(error.message, 'Login Error', 5000)
+                NotificationManager.error(error.message, 'Input Error', 5000)
                 flushOrganizationState()
+            }
+        } else if (organizationName === '') {
+            NotificationManager.error('Please enter an Organization Name', 'Input Error', 5000)
+        } else if (publicUrl.length < 27) {
+            if (publicUrl.length === 23) {
+                NotificationManager.error('Please enter a Public URL.', "Input Error", 5000)
+            } else {
+                NotificationManager.error('Public URL must be longer than 4 characters.', 'Input Error', 5000)
             }
         } else {
             NotificationManager.error('Enter an Organization Name and a Public URL.', 'Input Error', 5000)
@@ -72,6 +87,12 @@ const OrganizationCreation = ({
 
     useEffect(() => {
         setUrlExist(false)
+    }, [publicUrl])
+
+    useEffect(() => {
+        if (publicUrl.length < 23) {
+            setPublicUrl('https://timecounts.org/')
+        }
     }, [publicUrl])
 
     return <div className="site-wrap">
@@ -156,7 +177,9 @@ const mapStateToProps = state => {
         tokens: state.auth.tokens,
         successMessage: state.organization.successMessage,
         loading: state.organization.loading,
-        error: state.organization.error
+        error: state.organization.error,
+        dataOrganizationName: state.organization.dataOrganizationName,
+        dataPublicUrl: state.organization.dataPublicUrl
     }
 }
 

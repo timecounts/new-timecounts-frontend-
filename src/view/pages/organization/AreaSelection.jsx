@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar'
@@ -8,7 +8,7 @@ import * as ActionCreators from '../../../application/actions'
 
 import Logo from '../../assets/images/company.svg'
 
-const AreaSelection = ({ username, organizationDataStep3 }) => {
+const AreaSelection = ({ username, dataAreas, organizationDataStep3 }) => {
 
     const history = useHistory()
     const [notSelectedList, setNotSelectedList] = useState([
@@ -19,7 +19,7 @@ const AreaSelection = ({ username, organizationDataStep3 }) => {
         'Children and Youth',
         'Community'
     ])
-    const [selectedList, setSelectedList] = useState([])
+    const [selectedList, setSelectedList] = useState(dataAreas.length === 0 ? [] : dataAreas)
 
     const handleNextStep = e => {
         e.preventDefault()
@@ -31,6 +31,11 @@ const AreaSelection = ({ username, organizationDataStep3 }) => {
             NotificationManager.error('You must select atleast one area.', 'Selection Warning', 5000)
         }
     }
+
+    useEffect(() => {
+        const newNotSelectedList = notSelectedList.filter(i => !selectedList.includes(i))
+        setNotSelectedList(newNotSelectedList)
+    }, [])
 
     return <div className="site-wrap">
         <div className="header-wrap">
@@ -128,7 +133,8 @@ const AreaSelection = ({ username, organizationDataStep3 }) => {
 
 const mapStateToProps = state => {
     return {
-        username: state.auth.tokens.userData.username
+        username: state.auth.tokens.userData.username,
+        dataAreas: state.organization.dataAreas
     }
 }
 

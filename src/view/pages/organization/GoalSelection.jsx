@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar'
@@ -7,11 +7,32 @@ import { NotificationContainer, NotificationManager } from 'react-notifications'
 import * as ActionCreators from '../../../application/actions'
 
 import Logo from '../../assets/images/company.svg'
+import CreateReportsIcon from '../../assets/images/create-reports.svg'
+import TrackVolunteerTimeIcon from '../../assets/images/track-volunteer-time.svg'
+import ManageAVolunteerDatabaseIcon from '../../assets/images/manage-a-volunteer-database.svg'
+import CustomizeSignupFormsIcon from '../../assets/images/customize-signup-forms.svg'
+import CommunicateWithVolunteersIcon from '../../assets/images/communicate-with-volunteers.svg'
+import CreateVolunteerEventsIcon from '../../assets/images/create-volunteer-events.svg'
+import PublishOngoingSchedulesIcon from '../../assets/images/publish-ongoing-schedules.svg'
+import CreateApplicationsIcon from '../../assets/images/create-applications.svg'
 
-const GoalSelection = ({ username, organizationDataStep4 }) => {
+const GoalSelection = ({ 
+    username, 
+    dataOrganizationName,
+    dataPublicUrl,
+    dataCategory,
+    dataAreas,
+    dataGoals,
+    loading, 
+    successMessage,
+    error,
+    organizationDataStep4,
+    organizationCreation,
+    flushOrganizationState
+}) => {
 
     const history = useHistory()
-    const [selectedList, setSelectedList] = useState([])
+    const [selectedList, setSelectedList] = useState(dataGoals.length === 0 ? [] : dataGoals)
 
     const handleClick = e => {
         e.preventDefault()
@@ -70,13 +91,46 @@ const GoalSelection = ({ username, organizationDataStep4 }) => {
     const handleNextStep = e => {
         e.preventDefault()
 
-        if (selectedList.length !== 0) {
+        if (
+            selectedList.length !== 0 &&
+            dataOrganizationName !== '' &&
+            dataPublicUrl.length > 27 &&
+            dataCategory.length !== 0 &&
+            dataAreas.length !== 0
+        ) {
             organizationDataStep4(selectedList)
-            history.push('/organization/pending-creation')
-        } else {
+
+            organizationCreation({
+                organizationName: dataOrganizationName,
+                publicUrl: dataPublicUrl,
+                category: dataCategory,
+                areas: dataAreas,
+                goals: selectedList
+            })
+        } else if (dataOrganizationName === '' && dataPublicUrl.length > 27) {
+            history.push('/organization/creation')
+        } else if (dataCategory === '') {
+            history.push('/organization/category')
+        } else if (dataAreas.length === 0) {
+            history.push('/organization/area')
+        } else if (selectedList.length !== 0) {
             NotificationManager.error('You must select atleast one Goal', 'Selection Error', 5000)
         }
     }
+
+    useEffect(() => {
+        if (successMessage.data === 'Organization added Successfully.') {
+            flushOrganizationState()
+            history.push('/organization/pending-creation')
+        }
+    }, [successMessage])
+
+    useEffect(() => {
+        if (error !== '') {
+            NotificationManager.error(error, 'Organization Registration Error', 5000)
+            flushOrganizationState()
+        }
+    }, [error])
 
     return <div className="site-wrap">
         <div className="header-wrap">
@@ -105,7 +159,7 @@ const GoalSelection = ({ username, organizationDataStep4 }) => {
                                                     className={`select-wrap ${selectedList.filter(item => item === 'CREATE_REPORTS').length !== 0 && 'active'}`}
                                                     onClick={handleClick}
                                                 >
-                                                    {/* <img src="images/icon.jpg"> */}
+                                                    <img src={CreateReportsIcon} />
                                                     <span>Create Reports</span>
                                                 </div>
                                             </div>
@@ -114,7 +168,7 @@ const GoalSelection = ({ username, organizationDataStep4 }) => {
                                                     className={`select-wrap ${selectedList.filter(item => item === 'TRACK_VOLUNTEER_TIME').length !== 0 && 'active'}`}
                                                     onClick={handleClick}
                                                 >
-                                                    {/* <img src="images/icon.jpg"> */}
+                                                    <img src={TrackVolunteerTimeIcon} />
                                                     <span>Track Volunteer Time</span>
                                                 </div>
                                             </div>
@@ -123,7 +177,7 @@ const GoalSelection = ({ username, organizationDataStep4 }) => {
                                                     className={`select-wrap ${selectedList.filter(item => item === 'MANAGE_A_VOLUNTEER_DATABASE').length !== 0 && 'active'}`}
                                                     onClick={handleClick}
                                                 >
-                                                    {/* <img src="images/icon.jpg"> */}
+                                                    <img src={ManageAVolunteerDatabaseIcon} />
                                                     <span>Manage a Volunteer Database</span>
                                                 </div>
                                             </div>
@@ -132,7 +186,7 @@ const GoalSelection = ({ username, organizationDataStep4 }) => {
                                                     className={`select-wrap ${selectedList.filter(item => item === 'CUSTOMIZE_SIGNUP_FORMS').length !== 0 && 'active'}`}
                                                     onClick={handleClick}
                                                 >
-                                                    {/* <img src="images/icon.jpg"> */}
+                                                    <img src={CustomizeSignupFormsIcon} />
                                                     <span>Customize Signup Forms</span>
                                                 </div>
                                             </div>
@@ -141,7 +195,7 @@ const GoalSelection = ({ username, organizationDataStep4 }) => {
                                                     className={`select-wrap ${selectedList.filter(item => item === 'COMMUNICATION_WITH_VOLUNTEERS').length !== 0 && 'active'}`}
                                                     onClick={handleClick}
                                                 >
-                                                    {/* <img src="images/icon.jpg"> */}
+                                                    <img src={CommunicateWithVolunteersIcon} />
                                                     <span>Communicate with Volunteers</span>
                                                 </div>
                                             </div>
@@ -150,7 +204,7 @@ const GoalSelection = ({ username, organizationDataStep4 }) => {
                                                     className={`select-wrap ${selectedList.filter(item => item === 'CREATE_APPLICATIONS').length !== 0 && 'active'}`}
                                                     onClick={handleClick}
                                                 >
-                                                    {/* <img src="images/icon.jpg"> */}
+                                                    <img src={CreateApplicationsIcon} />
                                                     <span>Create Applications</span>
                                                 </div>
                                             </div>
@@ -159,7 +213,7 @@ const GoalSelection = ({ username, organizationDataStep4 }) => {
                                                     className={`select-wrap ${selectedList.filter(item => item === 'CREATE_VOLUNTEER_EVENTS').length !== 0 && 'active'}`}
                                                     onClick={handleClick}
                                                 >
-                                                    {/* <img src="images/icon.jpg"> */}
+                                                    <img src={CreateVolunteerEventsIcon} />
                                                     <span>Create Volunteer Events</span>
                                                 </div>
                                             </div>
@@ -168,7 +222,7 @@ const GoalSelection = ({ username, organizationDataStep4 }) => {
                                                     className={`select-wrap ${selectedList.filter(item => item === 'PUBLISH_ONGOING_SCHEDULES').length !== 0 && 'active'}`}
                                                     onClick={handleClick}
                                                 >
-                                                    {/* <img src="images/icon.jpg"> */}
+                                                    <img src={PublishOngoingSchedulesIcon} />
                                                     <span>Publish Ongoing Schedules</span>
                                                 </div>
                                             </div>
@@ -191,13 +245,23 @@ const GoalSelection = ({ username, organizationDataStep4 }) => {
 
 const mapStateToProps = state => {
     return {
-        username: state.auth.tokens.userData.username
+        username: state.auth.tokens.userData.username,
+        dataOrganizationName: state.organization.dataOrganizationName,
+        dataPublicUrl: state.organization.dataPublicUrl,
+        dataCategory: state.organization.dataCategory,
+        dataAreas: state.organization.dataAreas,
+        dataGoals: state.organization.dataGoals,
+        loading: state.organization.loading,
+        successMessage: state.organization.successMessage,
+        error: state.organization.error
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        organizationDataStep4: data => dispatch(ActionCreators.organizationDataStep4(data))
+        organizationDataStep4: data => dispatch(ActionCreators.organizationDataStep4(data)),
+        flushOrganizationState: () => dispatch(ActionCreators.flushOrganizationState()),
+        organizationCreation: requestbody => dispatch(ActionCreators.organizationCreation(requestbody))
     }
 }
 
