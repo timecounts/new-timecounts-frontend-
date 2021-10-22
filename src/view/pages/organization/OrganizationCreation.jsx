@@ -44,7 +44,7 @@ const OrganizationCreation = ({
     const handleClick = async e => {
         e.preventDefault()
 
-        if (organizationName !== '' && publicUrl.length > 27) {
+        if (organizationName !== '' && publicUrl.length > 26) {
             try {
                 const sanitizedOrganizationName = await yup
                     .string()

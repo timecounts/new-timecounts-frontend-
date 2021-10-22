@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -17,21 +17,14 @@ import CreationRequestPending from './view/pages/organization/CreationRequestPen
 
 function App({ userTokens, loading, error }) {
 
-    const [tokens, setTokens] = useState({})
-
     useEffect(() => {
-        setTokens(userTokens)
+        console.log(userTokens)
     }, [userTokens])
-
-    useEffect(() => {
-        console.log(error)
-        console.log(tokens)
-    }, [tokens, error])
 
     return (
         <BrowserRouter>
                 {
-                    !tokens.success ? (
+                    !userTokens.success ? (
                         <Switch>
                             <Route path='/email-confirmed/:emailId' component={EmailConfirmed} />
                             <Route path='/email-resent/:emailId/' component={ResentEmail} />
@@ -51,6 +44,9 @@ function App({ userTokens, loading, error }) {
                             <Route path='/organization/category' component={CategorySelection} />
                             <Route path='/organization/creation' component={OrganizationCreation} />
                             <Route path='/inactive-default' component={InactiveDefault} />
+                            <Route exact path='/'>
+                                <Redirect to='/inactive-default' />
+                            </Route>
                             <Route component={NotFound} />
                         </Switch>
                     )
