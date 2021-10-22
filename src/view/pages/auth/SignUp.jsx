@@ -16,7 +16,7 @@ import FacebookIcon from '../../assets/images/icon-fb-colorful.svg'
 import AppleIcon from '../../assets/images/icon-apple.svg'
 import MailIcon from '../../assets/images/icon-mail.svg'
 
-const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loading, error, flushUserError }) => {
+const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loading, error, flushUserState }) => {
 
     const history = useHistory()
     const [signWithEmail, setSignWithEmail] = useState(false)
@@ -28,6 +28,7 @@ const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loa
 
     useEffect(() => {
         if (message.data === 'User created successfully.') {
+            flushUserState()
             history.push(`/confirm-your-email/${email}`)
         }
     }, [message])
@@ -59,7 +60,7 @@ const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loa
                 })
             } catch (error) {
                 NotificationManager.error(error.message, 'Signup Error', 5000)
-                flushUserError()
+                flushUserState()
             }
         } else {
             NotificationManager.error('Your input fields should not be empty.', 'Empty fields', 3000)
@@ -69,7 +70,7 @@ const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loa
     useEffect(() => {
         if (error) {
             NotificationManager.error(error, 'Signup Error', 5000)
-            flushUserError()
+            flushUserState()
         }
     }, [error])
 
@@ -90,7 +91,7 @@ const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loa
     const handleSocialSignupFailure = error => {
         if (error) {
             NotificationManager.error(error, 'Signup Error', 5000)
-            flushUserError()
+            flushUserState()
         }
     }
 
