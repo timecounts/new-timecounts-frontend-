@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -17,14 +17,20 @@ import CreationRequestPending from './view/pages/organization/CreationRequestPen
 
 function App({ userTokens, loading, error }) {
 
+    const [tokens, setTokens] = useState(userTokens)
+
     useEffect(() => {
-        console.log(userTokens)
+        setTokens(userTokens)
     }, [userTokens])
+
+    useEffect(() => {
+        console.log(tokens)
+    }, [tokens])
 
     return (
         <BrowserRouter>
                 {
-                    !userTokens.success ? (
+                    !tokens.success ? (
                         <Switch>
                             <Route path='/email-confirmed/:emailId' component={EmailConfirmed} />
                             <Route path='/email-resent/:emailId/' component={ResentEmail} />
@@ -65,9 +71,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // login: requestBody => dispatch(ActionCreators.login(requestBody)),
-        // googleLogin: () => dispatch(ActionCreators.googleLogin()),
-        // facebookLogin: () => dispatch(ActionCreators.facebookLogin())
+        // flushAuthState: () => dispatch(ActionCreators.flushAuthState())
     }
 }
 

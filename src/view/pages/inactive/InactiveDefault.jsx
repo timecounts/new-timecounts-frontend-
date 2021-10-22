@@ -3,21 +3,28 @@ import { Link, useHistory } from 'react-router-dom'
 import stringAvatar from '../../utils/stringAvatar'
 import { connect } from 'react-redux'
 import * as ActionCreators from '../../../application/actions'
-import { useEffect } from 'react'
-import {NotificationContainer, NotificationManager} from 'react-notifications'
+import { useEffect, useState } from 'react'
+import { NotificationContainer, NotificationManager } from 'react-notifications'
 
-const InactiveDefault = ({ logout, userTokens, logoutLoading, logoutSuccess, logoutError }) => {
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
+
+const InactiveDefault = ({ logout, userTokens, logoutLoading, logoutSuccess, logoutError, flushAuthState }) => {
 
     const history = useHistory()
+    const [showDropdown, setShowDropdown] = useState(false)
 
     useEffect(() => {
         if (logoutSuccess === 'User Successfully logged out.') {
+            flushAuthState()
             history.push('/login')
         }
     }, [logoutSuccess])
 
     useEffect(() => {
-        console.log('Logout Error: ', logoutError)
+        if (logoutError) {
+            NotificationManager.error(logoutError, 'Logout Error', 5000)
+            flushAuthState()
+        }
     }, [logoutError])
 
     const handleLogout = async e => {
@@ -40,9 +47,41 @@ const InactiveDefault = ({ logout, userTokens, logoutLoading, logoutSuccess, log
                         <Link className="search-icon">
                             <img src="images/search-icon.svg" />
                         </Link>
-                        <div className="profile-info">
-                            <Avatar {...stringAvatar('Deepanshu Patel')} onClick={handleLogout} />
+                        <div className="profile-info" onClick={() => setShowDropdown(previousState => !previousState)}>
+                            <Avatar {...stringAvatar('Deepanshu Patel')} />
                         </div>
+
+                        <div className={`profile-dropdown ${showDropdown && 'active'}`}>
+                            <div className="row">
+                                <div className="col-md-3">
+                                    <span className="pd-wrapper">
+                                        <img src="images/T.png" />
+                                    </span>
+                                </div>
+                                <div className="col-md-9">
+                                    <span className="pd-heading">My Private Org</span>
+                                    <span className="pd-text">Switch to Another Organization</span>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <Link to="#" style ={{ display: 'flex', alignItems: 'center' }}>
+                                        <AddOutlinedIcon />
+                                        Create Link New Organization
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="#">Edit Profile</Link>
+                                </li>
+                                <li>
+                                    <Link to="#">Help Center</Link>
+                                </li>
+                                <li>
+                                    <Link to="#" onClick={handleLogout}>Sign Out</Link>
+                                </li>
+                            </ul>
+                        </div>
+
                         <label htmlFor="toggleMainNav" className="menu-overlay"></label>
                         <div className="main-nav-holder">
                             <div className="close-nav">
@@ -792,16 +831,17 @@ const InactiveDefault = ({ logout, userTokens, logoutLoading, logoutSuccess, log
 
 const mapStateToProps = state => {
     return {
-        logoutLoading: state.auth.logoutLoading,
+        logoutLoading: state.auth.loading,
         logoutSuccess: state.auth.logoutSuccess,
-        logoutError: state.auth.logoutError,
+        logoutError: state.auth.error,
         userTokens: state.auth.tokens
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        logout: requestBody => dispatch(ActionCreators.logout(requestBody))
+        logout: requestBody => dispatch(ActionCreators.logout(requestBody)),
+        flushAuthState: () => dispatch(ActionCreators.flushAuthState())
     }
 }
 

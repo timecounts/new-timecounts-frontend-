@@ -8,7 +8,10 @@ import {
     FLUSH_AUTH_STATE_FROM_STATE,
     RESEND_EMAIL_REQUEST,
     RESEND_EMAIL_SUCCESS,
-    RESEND_EMAIL_FAILURE
+    RESEND_EMAIL_FAILURE,
+    FETCH_NEW_ACCESS_TOKEN_REQUEST,
+    FETCH_NEW_ACCESS_TOKEN_SUCCESS,
+    FETCH_NEW_ACCESS_TOKEN_FAILURE
 
 } from '../actions/actionTypes/authType'
 
@@ -18,7 +21,7 @@ const initialState = {
         success: false
     },
     error: '',
-    logoutSuccess: false,
+    logoutSuccess: '',
     resendMessage: ''
 }
 
@@ -70,7 +73,7 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                logoutSuccess: false,
+                logoutSuccess: '',
                 error: action.payload
             }
 
@@ -105,6 +108,34 @@ const authReducer = (state = initialState, action) => {
                 error: action.payload
             }
 
+        case FETCH_NEW_ACCESS_TOKEN_REQUEST: 
+            return {
+                ...state,
+                loading: true,
+                error: ''
+            }
+        
+
+        case FETCH_NEW_ACCESS_TOKEN_SUCCESS:
+
+        let newTokens = state.tokens
+        newTokens['accessToken'] = action.payload.accessToken
+        newTokens['refreshToken'] = action.payload.refreshToken
+
+            return {
+                ...state,
+                loading: false,
+                tokens: newTokens,
+                error: ''
+            }
+        
+        case FETCH_NEW_ACCESS_TOKEN_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
+            }
+        
         default:
             return state
     }

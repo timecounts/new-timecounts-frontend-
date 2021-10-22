@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from 'react-router-dom'
 import Avatar from "@mui/material/Avatar"
 import stringAvatar from '../../utils/stringAvatar'
 import { connect } from 'react-redux'
@@ -8,6 +9,7 @@ import * as yup from 'yup'
 import { useHistory } from 'react-router-dom'
 
 import Logo from '../../assets/images/company.svg'
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
 
 const OrganizationCreation = ({
     tokens,
@@ -18,10 +20,16 @@ const OrganizationCreation = ({
     organizationUrlExist,
     flushOrganizationState,
     dataOrganizationName,
-    dataPublicUrl
+    dataPublicUrl,
+    logout,
+    logoutLoading,
+    logoutSuccess,
+    logoutError,
+    flushAuthState
 }) => {
 
     const history = useHistory()
+    const [showDropdown, setShowDropdown] = useState(false)
     const [organizationName, setOrganizationName] = useState(dataOrganizationName)
     const [publicUrl, setPublicUrl] = useState(dataPublicUrl.length === 0 ? 'https://timecounts.org/' : dataPublicUrl)
     const [urlExist, setUrlExist] = useState(false)
@@ -32,6 +40,20 @@ const OrganizationCreation = ({
             history.push('/organization/category')
         }
     }, [successMessage])
+
+    useEffect(() => {
+        if (logoutError) {
+            NotificationManager.error(logoutError, 'Logout Error', 5000)
+            flushAuthState()
+        }
+    }, [logoutError])
+
+    useEffect(() => {
+        if (logoutSuccess === 'User Successfully logged out.') {
+            flushAuthState()
+            history.push('/login')
+        }
+    }, [logoutSuccess])
 
     useEffect(() => {
         if (error !== '') {
@@ -95,6 +117,13 @@ const OrganizationCreation = ({
         }
     }, [publicUrl])
 
+    const handleLogout = async e => {
+        e.preventDefault()
+        await logout({
+            refreshToken: tokens.refreshToken
+        })
+    }
+
     return <div className="site-wrap">
         <div className="header-wrap">
             <div className="header">
@@ -103,18 +132,46 @@ const OrganizationCreation = ({
                         src={Logo}
                         alt="Company Logo"
                     />
-                    <div className="profile-info">
+                    <div className="profile-info" onClick={() => setShowDropdown(previousState => !previousState)}>
                         <Avatar {...stringAvatar(tokens.userData.username)} />
                     </div>
+                    <div className={`profile-dropdown ${showDropdown && 'active'}`}>
+                            <div className="row">
+                                <div className="col-md-3">
+                                    <span className="pd-wrapper">
+                                        <img src="images/T.png" />
+                                    </span>
+                                </div>
+                                <div className="col-md-9">
+                                    <span className="pd-heading">My Private Org</span>
+                                    <span className="pd-text">Switch to Another Organization</span>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <Link to="#" style ={{ display: 'flex', alignItems: 'center' }}>
+                                        <AddOutlinedIcon />
+                                        Create Link New Organization
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="#">Edit Profile</Link>
+                                </li>
+                                <li>
+                                    <Link to="#">Help Center</Link>
+                                </li>
+                                <li>
+                                    <Link to="#" onClick={handleLogout}>Sign Out</Link>
+                                </li>
+                            </ul>
+                        </div>
                 </nav>
             </div>
         </div>
         <div className="site-container">
-
             <div className="container">
                 <div className="step-form">
                     <div className="modal-wrap">
-
                         <div className="modal-bodies">
                             <div className="modal-body modal-body-step-1 is-showing">
                                 <div className="title">Step 1 of 4</div>
@@ -179,15 +236,20 @@ const mapStateToProps = state => {
         loading: state.organization.loading,
         error: state.organization.error,
         dataOrganizationName: state.organization.dataOrganizationName,
-        dataPublicUrl: state.organization.dataPublicUrl
+        dataPublicUrl: state.organization.dataPublicUrl,
+        logoutLoading: state.auth.loading,
+        logoutSuccess: state.auth.logoutSuccess,
+        logoutError: state.auth.error,
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
+        logout: requestBody => dispatch(ActionCreators.logout(requestBody)),
         organizationDataStep1: data => dispatch(ActionCreators.organizationDataStep1(data)),
         organizationUrlExist: requestBody => dispatch(ActionCreators.organizationUrlExist(requestBody)),
-        flushOrganizationState: () => dispatch(ActionCreators.flushOrganizationState())
+        flushOrganizationState: () => dispatch(ActionCreators.flushOrganizationState()),
+        flushAuthState: () => dispatch(ActionCreators.flushAuthState())
     }
 }
 

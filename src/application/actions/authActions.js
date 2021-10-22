@@ -8,7 +8,10 @@ import {
     FLUSH_AUTH_STATE_FROM_STATE,
     RESEND_EMAIL_REQUEST,
     RESEND_EMAIL_SUCCESS,
-    RESEND_EMAIL_FAILURE
+    RESEND_EMAIL_FAILURE,
+    FETCH_NEW_ACCESS_TOKEN_REQUEST,
+    FETCH_NEW_ACCESS_TOKEN_SUCCESS,
+    FETCH_NEW_ACCESS_TOKEN_FAILURE
 } from './actionTypes/authType'
 import services from '../../infrastructure/services'
 import { signupRequest } from '.'
@@ -154,8 +157,12 @@ export const logout = requestBody => {
                 dispatch(logoutSuccess(data))
             })
             .catch(error => {
-                const errorMessage = error.response.data.message
-                dispatch(logoutFailure(errorMessage))
+                if (error.response.data.message == 'Unauthorized' || error.response.data.message === 'jwt expired') {
+                    const data = 'User Successfully logged out.'
+                    dispatch(logoutSuccess(data))
+                } else {
+                    dispatch(logoutFailure(error.response.data.message))
+                }                
             })
     }
 }
@@ -202,5 +209,25 @@ export const resendEmail = requestBody => {
                 const errorMessage = error.response.data.message
                 dispatch(resendEmailFailure(errorMessage))
             })
+    }
+}
+
+export const fetchNewAcessTokenRequest = () => {
+    return {
+        type: FETCH_NEW_ACCESS_TOKEN_REQUEST
+    }
+}
+
+export const fetchNewAccessTokenSuccess = data => {
+    return {
+        type: FETCH_NEW_ACCESS_TOKEN_SUCCESS,
+        payload: data
+    }
+}
+
+export const fetchNewAccessTokenFailure = error => {
+    return {
+        type: FETCH_NEW_ACCESS_TOKEN_FAILURE,
+        payload: error
     }
 }
