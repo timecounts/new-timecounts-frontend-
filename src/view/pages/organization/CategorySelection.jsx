@@ -1,17 +1,35 @@
-import { useState } from 'react'
-import Avatar from '@mui/material/Avatar'
-import stringAvatar from '../../utils/stringAvatar'
+import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import * as ActionCreators from '../../../application/actions'
 import { NotificationContainer, NotificationManager } from 'react-notifications'
+import LoggedSimpleHeader from '../../components/common/LoggedSimpleHeader'
 
-import Logo from '../../assets/images/company.svg'
-
-const CategorySelection = ({ username, dataCategory, organizationDataStep2 }) => {
+const CategorySelection = ({ 
+    dataCategory, 
+    organizationDataStep2,
+    logoutLoading,
+    logoutSuccess,
+    logoutError,
+    flushAuthState
+}) => {
 
     const history = useHistory()
     const [selectedCategory, setSelectedCategory] = useState(dataCategory.length === 0 ? '' : dataCategory)
+
+    useEffect(() => {
+        if (logoutError) {
+            NotificationManager.error(logoutError, 'Logout Error', 5000)
+            flushAuthState()
+        }
+    }, [logoutError])
+
+    useEffect(() => {
+        if (logoutSuccess === 'User Successfully logged out.') {
+            flushAuthState()
+            history.push('/login')
+        }
+    }, [logoutSuccess])
 
     const handleNextStep = e => {
         e.preventDefault()
@@ -25,19 +43,7 @@ const CategorySelection = ({ username, dataCategory, organizationDataStep2 }) =>
     }
 
     return <div className="site-wrap">
-        <div className="header-wrap">
-            <div className="header">
-                <nav>
-                    <img
-                        src={Logo}
-                        alt="Timecount Logo"
-                    />
-                    <div className="profile-info">
-                        <Avatar {...stringAvatar(username)} />
-                    </div>
-                </nav>
-            </div>
-        </div>
+        <LoggedSimpleHeader />
         <div className="site-container">
             <div className="container">
                 <div className="step-form">
@@ -152,8 +158,24 @@ const CategorySelection = ({ username, dataCategory, organizationDataStep2 }) =>
                                     </div>
 
                                     <div className="button-wrap fade-in">
-                                        <div className=" button-alt" onClick={() => history.goBack()}>Back</div>
-                                        <div className="button" onClick={handleNextStep}>Next Step</div>
+                                        <div 
+                                            className=" button-alt" 
+                                            onClick={() => history.goBack()}
+                                            style={{
+                                                textTransform: 'none'
+                                            }}
+                                        >
+                                            Back
+                                        </div>
+                                        <div 
+                                            className="button" 
+                                            onClick={handleNextStep}
+                                            style={{
+                                                textTransform: 'none'
+                                            }}
+                                        >
+                                            Next Step
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -168,14 +190,17 @@ const CategorySelection = ({ username, dataCategory, organizationDataStep2 }) =>
 
 const mapStateToProps = state => {
     return {
-        username: state.auth.tokens.userData.username,
-        dataCategory: state.organization.dataCategory
+        dataCategory: state.organization.dataCategory,
+        logoutLoading: state.auth.loading,
+        logoutSuccess: state.auth.logoutSuccess,
+        logoutError: state.auth.error
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        organizationDataStep2: data => dispatch(ActionCreators.organizationDataStep2(data))
+        organizationDataStep2: data => dispatch(ActionCreators.organizationDataStep2(data)),
+        flushAuthState: () => dispatch(ActionCreators.flushAuthState())
     }
 }
 

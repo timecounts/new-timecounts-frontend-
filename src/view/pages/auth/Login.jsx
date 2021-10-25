@@ -14,7 +14,6 @@ import AppleIcon from '../../assets/images/icon-apple.svg'
 import MailIcon from '../../assets/images/icon-mail.svg'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
-import { flushUserState } from '../../../application/actions'
 
 const Login = ({ login, googleLogin, facebookLogin, flushAuthState, userTokens, loading, error }) => {
 
@@ -26,7 +25,7 @@ const Login = ({ login, googleLogin, facebookLogin, flushAuthState, userTokens, 
 
     useEffect(() => {
         if (userTokens.success) {
-            history.push('/inactive-default')
+            history.push('/')
         }
     }, [userTokens])
 

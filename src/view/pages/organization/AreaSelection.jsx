@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import Avatar from '@mui/material/Avatar'
-import stringAvatar from '../../utils/stringAvatar'
 import { NotificationContainer, NotificationManager } from 'react-notifications'
 import * as ActionCreators from '../../../application/actions'
+import LoggedSimpleHeader from '../../components/common/LoggedSimpleHeader'
 
-import Logo from '../../assets/images/company.svg'
-
-const AreaSelection = ({ username, dataAreas, organizationDataStep3 }) => {
+const AreaSelection = ({
+    dataAreas, 
+    organizationDataStep3,
+    logoutLoading,
+    logoutSuccess,
+    logoutError,
+    flushAuthState
+}) => {
 
     const history = useHistory()
     const [notSelectedList, setNotSelectedList] = useState([
@@ -37,17 +41,22 @@ const AreaSelection = ({ username, dataAreas, organizationDataStep3 }) => {
         setNotSelectedList(newNotSelectedList)
     }, [])
 
+    useEffect(() => {
+        if (logoutError) {
+            NotificationManager.error(logoutError, 'Logout Error', 5000)
+            flushAuthState()
+        }
+    }, [logoutError])
+
+    useEffect(() => {
+        if (logoutSuccess === 'User Successfully logged out.') {
+            flushAuthState()
+            history.push('/login')
+        }
+    }, [logoutSuccess])
+
     return <div className="site-wrap">
-        <div className="header-wrap">
-            <div className="header">
-                <nav>
-                    <img src={Logo} />
-                    <div className="profile-info">
-                        <Avatar {...stringAvatar(username)} />
-                    </div>
-                </nav>
-            </div>
-        </div>
+        <LoggedSimpleHeader />
         <div className="site-container">
             <div className="container">
                 <div className="step-form">
@@ -117,8 +126,24 @@ const AreaSelection = ({ username, dataAreas, organizationDataStep3 }) => {
                                         </form>
                                     </div>
                                     <div className="button-wrap fade-in">
-                                        <div className=" button-alt" onClick={() => history.goBack()}>Back</div>
-                                        <div className="button" onClick={handleNextStep}>Next Step</div>
+                                        <div 
+                                            className="button-alt" 
+                                            onClick={() => history.goBack()}
+                                            style={{
+                                                textTransform: 'none'
+                                            }}
+                                        >
+                                            Back
+                                        </div>
+                                        <div 
+                                            className="button" 
+                                            onClick={handleNextStep}
+                                            style={{
+                                                textTransform: 'none'
+                                            }}
+                                        >
+                                            Next Step
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -133,14 +158,17 @@ const AreaSelection = ({ username, dataAreas, organizationDataStep3 }) => {
 
 const mapStateToProps = state => {
     return {
-        username: state.auth.tokens.userData.username,
-        dataAreas: state.organization.dataAreas
+        dataAreas: state.organization.dataAreas,
+        logoutLoading: state.auth.loading,
+        logoutSuccess: state.auth.logoutSuccess,
+        logoutError: state.auth.error
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        organizationDataStep3: data => dispatch(ActionCreators.organizationDataStep3(data))
+        organizationDataStep3: data => dispatch(ActionCreators.organizationDataStep3(data)),
+        flushAuthState: () => dispatch(ActionCreators.flushAuthState())
     }
 }
 

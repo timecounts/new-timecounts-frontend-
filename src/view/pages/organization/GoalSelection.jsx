@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import Avatar from '@mui/material/Avatar'
-import stringAvatar from '../../utils/stringAvatar'
 import { NotificationContainer, NotificationManager } from 'react-notifications'
 import * as ActionCreators from '../../../application/actions'
 
-import Logo from '../../assets/images/company.svg'
 import CreateReportsIcon from '../../assets/images/create-reports.svg'
 import TrackVolunteerTimeIcon from '../../assets/images/track-volunteer-time.svg'
 import ManageAVolunteerDatabaseIcon from '../../assets/images/manage-a-volunteer-database.svg'
@@ -15,9 +12,9 @@ import CommunicateWithVolunteersIcon from '../../assets/images/communicate-with-
 import CreateVolunteerEventsIcon from '../../assets/images/create-volunteer-events.svg'
 import PublishOngoingSchedulesIcon from '../../assets/images/publish-ongoing-schedules.svg'
 import CreateApplicationsIcon from '../../assets/images/create-applications.svg'
+import LoggedSimpleHeader from '../../components/common/LoggedSimpleHeader'
 
-const GoalSelection = ({ 
-    username, 
+const GoalSelection = ({
     dataOrganizationName,
     dataPublicUrl,
     dataCategory,
@@ -28,7 +25,11 @@ const GoalSelection = ({
     error,
     organizationDataStep4,
     organizationCreation,
-    flushOrganizationState
+    flushOrganizationState,
+    logoutLoading,
+    logoutSuccess,
+    logoutError,
+    flushAuthState
 }) => {
 
     const history = useHistory()
@@ -119,6 +120,20 @@ const GoalSelection = ({
     }
 
     useEffect(() => {
+        if (logoutError) {
+            NotificationManager.error(logoutError, 'Logout Error', 5000)
+            flushAuthState()
+        }
+    }, [logoutError])
+
+    useEffect(() => {
+        if (logoutSuccess === 'User Successfully logged out.') {
+            flushAuthState()
+            history.push('/login')
+        }
+    }, [logoutSuccess])
+
+    useEffect(() => {
         if (successMessage.data === 'Organization added Successfully.') {
             flushOrganizationState()
             history.push('/organization/pending-creation')
@@ -133,16 +148,7 @@ const GoalSelection = ({
     }, [error])
 
     return <div className="site-wrap">
-        <div className="header-wrap">
-            <div className="header">
-                <nav>
-                    <img src={Logo} />
-                    <div className="profile-info">
-                        <Avatar {...stringAvatar(username)} />
-                    </div>
-                </nav>
-            </div>
-        </div>
+        <LoggedSimpleHeader />
         <div className="site-container">
             <div className="container">
                 <div className="step-form">
@@ -229,8 +235,20 @@ const GoalSelection = ({
                                         </div>
                                     </div>
                                     <div className="button-wrap fade-in">
-                                        <div className=" button-alt" onClick={() => history.goBack()}>Back</div>
-                                        <div className="button"  onClick={handleNextStep}>Next step</div>
+                                        <div 
+                                            className="button-alt" 
+                                            onClick={() => history.goBack()}
+                                            style={{textTransform: 'none'}}
+                                        >
+                                            Back
+                                        </div>
+                                        <div 
+                                            className="button" 
+                                            onClick={handleNextStep}
+                                            style={{textTransform: 'none'}}
+                                        >
+                                            Next Step
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -245,7 +263,6 @@ const GoalSelection = ({
 
 const mapStateToProps = state => {
     return {
-        username: state.auth.tokens.userData.username,
         dataOrganizationName: state.organization.dataOrganizationName,
         dataPublicUrl: state.organization.dataPublicUrl,
         dataCategory: state.organization.dataCategory,
@@ -253,7 +270,10 @@ const mapStateToProps = state => {
         dataGoals: state.organization.dataGoals,
         loading: state.organization.loading,
         successMessage: state.organization.successMessage,
-        error: state.organization.error
+        error: state.organization.error,
+        logoutLoading: state.auth.loading,
+        logoutSuccess: state.auth.logoutSuccess,
+        logoutError: state.auth.error
     }
 }
 
@@ -261,7 +281,8 @@ const mapDispatchToProps = dispatch => {
     return {
         organizationDataStep4: data => dispatch(ActionCreators.organizationDataStep4(data)),
         flushOrganizationState: () => dispatch(ActionCreators.flushOrganizationState()),
-        organizationCreation: requestbody => dispatch(ActionCreators.organizationCreation(requestbody))
+        organizationCreation: requestbody => dispatch(ActionCreators.organizationCreation(requestbody)),
+        flushAuthState: () => dispatch(ActionCreators.flushAuthState())
     }
 }
 

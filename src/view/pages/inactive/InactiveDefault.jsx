@@ -161,11 +161,9 @@ const InactiveDefault = ({ logout, userTokens, logoutLoading, logoutSuccess, log
                             </ul>
                         </div>
                     </nav>
-
-
-
                 </div>
             </div>
+            
             <div className="site-container">
                 <div className="site-top-wrap">
                     <div className="search-container">

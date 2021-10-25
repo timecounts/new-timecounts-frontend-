@@ -1663,6 +1663,19 @@ transform: translateY(-50%);
   
 }
 @media (min-width: 1200px){
+  .v-log-time,.v-opportunities{
+    font-size:14PX;
+}
+.v-profile-heading h2{
+    font-size: 35px;
+}
+.v-total-top h2{
+  font-size:52px;
+}
+.vtb-left h2,.vtb-right h2{
+  font-size:32px;
+}
+
   #vl-table.table-bordered thead td,  #vl-table.table-bordered thead th{
     font-size:18px;
     padding: 17px 11px 16px 10px;
@@ -1746,8 +1759,3 @@ transform: translateY(-50%);
   }
 }
 
-@media only screen and (min-width : 1280px) and (max-width : 1800px) {
-  body{
-    font-size:0.75em;
-}
-}

@@ -153,8 +153,10 @@ export const logout = requestBody => {
             .auth
             .logout(requestBody)
             .then(response => {
-                const data = 'User Successfully logged out.'
-                dispatch(logoutSuccess(data))
+                if (response.status) {
+                    const data = 'User Successfully logged out.'
+                    dispatch(logoutSuccess(data))
+                }
             })
             .catch(error => {
                 if (error.response.data.message == 'Unauthorized' || error.response.data.message === 'jwt expired') {

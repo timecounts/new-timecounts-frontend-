@@ -14,6 +14,7 @@ import CategorySelection from './view/pages/organization/CategorySelection'
 import AreaSelection from './view/pages/organization/AreaSelection'
 import GoalSelection from './view/pages/organization/GoalSelection'
 import CreationRequestPending from './view/pages/organization/CreationRequestPending'
+import Dashboard from './view/pages/dashboard'
 
 function App({ userTokens, loading, error }) {
 
@@ -50,9 +51,7 @@ function App({ userTokens, loading, error }) {
                             <Route path='/organization/category' component={CategorySelection} />
                             <Route path='/organization/creation' component={OrganizationCreation} />
                             <Route path='/inactive-default' component={InactiveDefault} />
-                            <Route exact path='/'>
-                                <Redirect to='/inactive-default' />
-                            </Route>
+                            <Route exact path='/' component={Dashboard} />
                             <Route component={NotFound} />
                         </Switch>
                     )

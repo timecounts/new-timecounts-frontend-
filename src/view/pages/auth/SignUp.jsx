@@ -76,7 +76,7 @@ const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loa
 
     useEffect(() => {
         if (userTokens.success) {
-            history.push('/inactive-default')
+            history.push('/')
         }
     }, [userTokens])
 

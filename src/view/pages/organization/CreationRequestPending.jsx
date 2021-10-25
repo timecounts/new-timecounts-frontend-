@@ -1,22 +1,36 @@
+import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import Avatar from '@mui/material/Avatar'
-import stringAvatar from '../../utils/stringAvatar'
+import * as ActionCreators from '../../../application/actions'
+import { NotificationContainer, NotificationManager } from 'react-notifications'
+import LoggedSimpleHeader from '../../components/common/LoggedSimpleHeader'
 
-import Logo from '../../assets/images/company.svg'
+const CreationRequestPending = ({
+    email,
+    logoutLoading,
+    logoutSuccess,
+    logoutError,
+    flushAuthState
+}) => {
 
-const CreationRequestPending = ({ username, email }) => {
+    const history = useHistory()
+
+    useEffect(() => {
+        if (logoutError) {
+            NotificationManager.error(logoutError, 'Logout Error', 5000)
+            flushAuthState()
+        }
+    }, [logoutError])
+
+    useEffect(() => {
+        if (logoutSuccess === 'User Successfully logged out.') {
+            flushAuthState()
+            history.push('/login')
+        }
+    }, [logoutSuccess])
+
     return <div className="site-wrap">
-        <div className="header-wrap">
-            <div className="header">
-                <nav>
-                    <img src={Logo} />
-                    <div className ="profile-info">
-                        <Avatar {...stringAvatar(username)} />
-                    </div>
-                </nav>
-            </div>
-        </div>
+        <LoggedSimpleHeader />
         <div className="site-container">
             <div className="container">
                 <div className="step-form">
@@ -28,7 +42,15 @@ const CreationRequestPending = ({ username, email }) => {
                                     <p className="eamil-sent-text">Your request to create a new organization is pending approval. You should
                                         shortly receive a confirmation on email <span><a href=""
                                             className="email-link">{email}</a></span></p>
-                                    <div className="button">Back to Dashbaord</div>
+                                    <div 
+                                        className="button"
+                                        style={{
+                                            textTransform: 'none'
+                                        }}
+                                        onClick={() => history.push('/')}
+                                    >
+                                        Back to Dashbaord
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -36,14 +58,23 @@ const CreationRequestPending = ({ username, email }) => {
                 </div>
             </div>
         </div>
+        <NotificationContainer />
     </div>
 }
 
 const mapStateToProps = state => {
     return {
-        username: state.auth.tokens.userData.username,
-        email: state.auth.tokens.userData.email
+        email: state.auth.tokens?.userData?.email,
+        logoutLoading: state.auth.loading,
+        logoutSuccess: state.auth.logoutSuccess,
+        logoutError: state.auth.error
     }
 }
 
-export default connect(mapStateToProps)(CreationRequestPending)
+const mapDispatchToProps = dispatch => {
+    return {
+        flushAuthState: () => dispatch(ActionCreators.flushAuthState())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreationRequestPending)
