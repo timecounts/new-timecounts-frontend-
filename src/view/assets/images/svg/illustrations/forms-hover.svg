@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="75"
+   height="60"
+   viewBox="0 0 75 60"
+   version="1.1"
+   id="svg3826"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Illustration_Forms-hover.svg">
+  <metadata
+     id="metadata3860">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Tablet Portrait</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview3858"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.51868132"
+     inkscape:cx="152.512"
+     inkscape:cy="-127.88448"
+     inkscape:window-x="67"
+     inkscape:window-y="405"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3826" />
+  <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title3828">Tablet Portrait</title>
+  <desc
+     id="desc3830">Created with Sketch.</desc>
+  <defs
+     id="defs3832" />
+  <g
+     id="Icons"
+     sketch:type="MSPage"
+     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1"
+     transform="translate(-40.988,-39.615518)">
+    <g
+       id="Tablet-Portrait"
+       sketch:type="MSArtboardGroup">
+      <g
+         id="Forms-B"
+         sketch:type="MSLayerGroup"
+         transform="translate(40,40)">
+        <path
+           d="M 54.317,8.133 38.862,23.325 53.62,38.338 74.732,17.585 65.536,8.229 54.317,8.133"
+           id="Fill-1"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#ffffff" />
+        <path
+           d="M 54.317,8.133 53.616,7.42 38.161,22.612 c -0.394,0.387 -0.399,1.02 -0.012,1.414 l 14.758,15.013 c 0.185,0.188 0.441,0.297 0.705,0.299 0.263,0.002 0.521,-0.102 0.709,-0.287 L 75.433,18.298 c 0.188,-0.185 0.297,-0.441 0.299,-0.705 0.002,-0.263 -0.102,-0.522 -0.287,-0.71 L 66.249,7.528 C 66.064,7.34 65.807,7.231 65.544,7.229 L 54.326,7.133 C 54.062,7.131 53.803,7.235 53.616,7.42 l 0.701,0.713 -0.009,1 10.805,0.092 8.205,8.348 L 53.632,36.924 40.276,23.337 55.018,8.846 54.317,8.133 l -0.009,1 0.009,-1"
+           id="Fill-2"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#074e70" />
+        <path
+           d="m 64.593,7.753 -4.944,4.861 -4.86,-4.945 C 54.401,7.276 53.768,7.27 53.374,7.657 52.98,8.044 52.975,8.677 53.362,9.071 l 5.561,5.658 c 0.185,0.188 0.442,0.297 0.705,0.299 0.263,0.002 0.522,-0.102 0.71,-0.287 L 65.995,9.18 C 66.389,8.793 66.394,8.159 66.007,7.766 65.62,7.372 64.987,7.366 64.593,7.753"
+           id="Fill-3"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#074e70" />
+        <path
+           d="m 50.069,20.026 0.019,4.002 c 10e-4,0.275 0.114,0.535 0.314,0.724 0.201,0.188 0.468,0.285 0.742,0.27 l 9.575,-0.54 c 0.551,-0.031 0.973,-0.503 0.942,-1.054 -0.031,-0.552 -0.503,-0.973 -1.054,-0.942 l -8.524,0.48 -0.014,-2.95 c -0.002,-0.552 -0.452,-0.997 -1.004,-0.995 -0.552,0.003 -0.998,0.452 -0.995,1.005 l -10e-4,0"
+           id="Fill-4"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#68bc48" />
+        <path
+           d="m 53.292,54.801 c 0,0 -1.395,2.876 -6.095,3.815"
+           id="Fill-5"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#ffffff" />
+        <path
+           d="m 52.392,54.365 0.046,0.022 -0.045,-0.024 -10e-4,0.002 0.046,0.022 -0.045,-0.024 c -0.039,0.072 -0.383,0.69 -1.212,1.386 -0.83,0.695 -2.14,1.477 -4.18,1.886 -0.541,0.108 -0.893,0.635 -0.785,1.176 0.108,0.542 0.635,0.893 1.177,0.785 2.525,-0.502 4.225,-1.549 5.28,-2.494 1.057,-0.945 1.475,-1.776 1.519,-1.864 0.241,-0.497 0.033,-1.096 -0.464,-1.336 -0.497,-0.241 -1.095,-0.034 -1.336,0.463"
+           id="Fill-6"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#65acc4" />
+        <path
+           d="m 41.895,33.368 -39.907,0 0,19.866 39.907,0 c 5.338,0 9.706,-4.368 9.706,-9.706 l 0,-0.455 c 0,-5.338 -4.368,-9.705 -9.706,-9.705"
+           id="Fill-7"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#e0eef3" />
+        <path
+           d="m 1.988,34.368 39.907,0 c 2.393,0 4.565,0.977 6.148,2.558 1.581,1.582 2.558,3.754 2.558,6.147 l 0,0.455 c 0,2.394 -0.977,4.565 -2.558,6.148 -1.583,1.581 -3.755,2.558 -6.148,2.558 l -39.907,0 c -0.553,0 -1,0.448 -1,1 0,0.552 0.447,1 1,1 l 39.907,0 C 47.79,54.23 52.597,49.423 52.601,43.528 l 0,-0.455 C 52.597,37.179 47.79,32.371 41.895,32.368 l -39.907,0 c -0.553,0 -1,0.447 -1,1 0,0.552 0.447,1 1,1"
+           id="Fill-8"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#65acc4" />
+        <path
+           d="m 43.97,43.335 c 0,1.755 -1.423,3.178 -3.178,3.178 -1.755,0 -3.178,-1.423 -3.178,-3.178 0,-1.755 1.423,-3.177 3.178,-3.177 1.755,0 3.178,1.422 3.178,3.177"
+           id="Fill-9"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#ffffff" />
+        <path
+           d="m 43.97,43.335 -1,0 c -0.002,1.203 -0.975,2.176 -2.178,2.178 -1.202,-0.002 -2.175,-0.975 -2.178,-2.178 0.003,-1.202 0.976,-2.175 2.178,-2.177 1.203,0.002 2.176,0.975 2.178,2.177 l 2,0 c -10e-4,-2.307 -1.87,-4.177 -4.178,-4.177 -2.308,0 -4.177,1.87 -4.177,4.177 0,2.308 1.869,4.177 4.177,4.178 2.308,-10e-4 4.177,-1.87 4.178,-4.178 l -1,0"
+           id="Fill-10"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#65acc4" />
+        <path
+           d="m 13.506,9.514 0,21.672 21.052,0 0,-29.605 -13.119,0 -7.933,7.933"
+           id="Fill-11"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#ffffff" />
+        <path
+           d="m 13.506,9.514 -1,0 0,21.672 c 0,0.263 0.107,0.521 0.293,0.707 0.186,0.186 0.444,0.293 0.707,0.293 l 21.052,0 c 0.264,0 0.521,-0.107 0.707,-0.293 0.187,-0.186 0.293,-0.444 0.293,-0.707 l 0,-29.605 C 35.558,1.318 35.452,1.06 35.265,0.874 35.079,0.688 34.822,0.581 34.558,0.581 l -13.119,0 c -0.263,0 -0.521,0.107 -0.707,0.293 l -7.933,7.933 c -0.186,0.186 -0.293,0.444 -0.293,0.707 l 1,0 0.707,0.707 7.64,-7.64 11.705,0 0,27.605 -19.052,0 0,-20.672 -1,0 0.707,0.707 -0.707,-0.707"
+           id="Fill-12"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#074e70" />
+        <path
+           d="m 20.439,1.92 0,6.933 -6.933,0 c -0.552,0 -1,0.448 -1,1 0,0.552 0.448,1 1,1 l 7.933,0 c 0.264,0 0.521,-0.107 0.707,-0.293 0.187,-0.186 0.293,-0.444 0.293,-0.707 l 0,-7.933 c 0,-0.552 -0.447,-1 -1,-1 -0.552,0 -1,0.448 -1,1"
+           id="Fill-13"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#074e70" />
+        <path
+           d="m 19.705,17.589 8.748,0 c 0.552,0 1,-0.447 1,-1 0,-0.552 -0.448,-1 -1,-1 l -8.748,0 c -0.552,0 -1,0.448 -1,1 0,0.553 0.448,1 1,1"
+           id="Fill-14"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#074e70" />
+        <path
+           d="m 19.705,23.21 6.846,0 c 0.552,0 1,-0.448 1,-1 0,-0.553 -0.448,-1 -1,-1 l -6.846,0 c -0.552,0 -1,0.447 -1,1 0,0.552 0.448,1 1,1"
+           id="Fill-15"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#074e70" />
+        <path
+           d="m 1.988,1.581 6.118,0 0,29.605 -6.118,0 0,-29.605 z"
+           id="Fill-16"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#ffffff" />
+        <path
+           d="m 1.988,2.581 5.118,0 0,27.605 -5.118,0 c -0.553,0 -1,0.447 -1,1 0,0.552 0.447,1 1,1 l 6.118,0 c 0.263,0 0.521,-0.107 0.707,-0.293 0.186,-0.186 0.293,-0.444 0.293,-0.707 l 0,-29.605 C 9.106,1.318 8.999,1.06 8.813,0.874 8.627,0.688 8.369,0.581 8.106,0.581 l -6.118,0 c -0.553,0 -1,0.448 -1,1 0,0.552 0.447,1 1,1"
+           id="Fill-17"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#074e70" />
+        <path
+           d="M 50.245,5.886 45.709,1.351"
+           id="Fill-18"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#ffffff" />
+        <path
+           d="M 50.952,5.179 46.416,0.643 c -0.391,-0.39 -1.024,-0.39 -1.415,0 -0.39,0.391 -0.39,1.024 0,1.415 l 4.536,4.536 c 0.391,0.39 1.024,0.39 1.415,0 0.39,-0.391 0.39,-1.024 0,-1.415"
+           id="Fill-19"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#65acc4" />
+        <path
+           d="M 46.197,9.371 44.023,7.197"
+           id="Fill-20"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#ffffff" />
+        <path
+           d="M 46.904,8.663 44.73,6.49 c -0.39,-0.391 -1.024,-0.391 -1.414,0 -0.391,0.39 -0.391,1.023 0,1.414 l 2.174,2.174 c 0.39,0.39 1.023,0.39 1.414,0 0.391,-0.391 0.391,-1.024 0,-1.415"
+           id="Fill-21"
+           sketch:type="MSShapeGroup"
+           inkscape:connector-curvature="0"
+           style="fill:#65acc4" />
+      </g>
+    </g>
+  </g>
+</svg>

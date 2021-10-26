@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px"
+	 height="64px" viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
+<style type="text/css">
+	.skejfhs{clip-path:url(#SVGID_2_);}
+</style>
+<g id="Layer_1" style="stroke: none;">
+  <defs>
+    <polygon id="SVGID_27_" points="56,31 50,31 50,25 48,25 48,31.009 42,31 42,33 48,33 48,39 50,39 50,33 56,33 					"/>
+  </defs>
+  <use xlink:href="#SVGID_27_"  style="overflow:visible;fill-rule:evenodd;clip-rule:evenodd;"/>
+  <clipPath id="SVGID_2_">
+    <use xlink:href="#SVGID_27_"  style="overflow:visible;"/>
+  </clipPath>
+  <path d="M34,17v14H12V17H34 M36,15H10v18h26V15L36,15z"/>
+  <path d="M34,33v16H12V33H34 M36,31H10v20h26V31L36,31z"/>
+</g>
+</svg>

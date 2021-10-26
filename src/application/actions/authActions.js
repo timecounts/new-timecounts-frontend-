@@ -55,13 +55,11 @@ export const login = requestBody => {
 
 export const googleLogin = response => {
     return dispatch => {
-        console.log('From Google: ', response)
         dispatch(loginRequest)
         services
             .auth
             .googleLogin(response)
             .then(res => {
-                console.log('Google Response: ', res)
                 const data = res.data
                 dispatch(loginSuccess(data))
             })
@@ -96,7 +94,6 @@ export const facebookLogin = response => {
             .auth
             .facebookLogin(response)
             .then(res => {
-                console.log('Facebook Response: ', res)
                 const data = res.data
                 dispatch(loginSuccess(data))
             })
@@ -114,7 +111,6 @@ export const facebookSignup = response => {
             .auth
             .facebookSignup(response)
             .then(res => {
-                console.log('Facebook Response: ', res)
                 const data = res.data
                 dispatch(loginSuccess(data))
             })
@@ -153,13 +149,13 @@ export const logout = requestBody => {
             .auth
             .logout(requestBody)
             .then(response => {
-                if (response.status) {
+                if (response.status === 204) {
                     const data = 'User Successfully logged out.'
                     dispatch(logoutSuccess(data))
                 }
             })
             .catch(error => {
-                if (error.response.data.message == 'Unauthorized' || error.response.data.message === 'jwt expired') {
+                if (error.response.data.message.toLowerCase() === 'unauthorized' || error.response.data.message === 'jwt expired') {
                     const data = 'User Successfully logged out.'
                     dispatch(logoutSuccess(data))
                 } else {

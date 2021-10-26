@@ -23,6 +23,7 @@ const OrganizationCreation = ({
 }) => {
 
     const history = useHistory()
+    const [canUrlChange, setCanUrlChange] = useState(true)
     const [organizationName, setOrganizationName] = useState(dataOrganizationName)
     const [publicUrl, setPublicUrl] = useState(dataPublicUrl.length === 0 ? 'https://timecounts.org/' : dataPublicUrl)
     const [urlExist, setUrlExist] = useState(false)
@@ -128,7 +129,12 @@ const OrganizationCreation = ({
                                             type="text"
                                             className="input-text"
                                             value={organizationName}
-                                            onChange={e => setOrganizationName(e.target.value)}
+                                            onChange={e => {
+                                                setOrganizationName(e.target.value)
+                                                if (canUrlChange) {
+                                                    setPublicUrl('https://timecounts.org/' + e.target.value.toLowerCase())
+                                                }
+                                            }}
                                         />
 
                                     </div>
@@ -143,7 +149,10 @@ const OrganizationCreation = ({
                                             className="input-text"
                                             placeholder="http://timecounts.org/"
                                             value={publicUrl}
-                                            onChange={e => setPublicUrl(e.target.value)}
+                                            onChange={e => {
+                                                setCanUrlChange(false)
+                                                if (!canUrlChange) setPublicUrl(e.target.value)
+                                            }}
                                         />
                                         <p className='error'>
                                             {

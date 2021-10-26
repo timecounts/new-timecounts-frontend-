@@ -24,10 +24,6 @@ function App({ userTokens, loading, error }) {
         setTokens(userTokens)
     }, [userTokens])
 
-    useEffect(() => {
-        console.log(tokens)
-    }, [tokens])
-
     return (
         <BrowserRouter>
                 {

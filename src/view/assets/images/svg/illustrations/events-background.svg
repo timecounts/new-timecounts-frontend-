@@ -1,0 +1,81 @@
+ <svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px'
+    width='500px' height='500px' viewBox='0 0 500 500' enableBackground='new 0 0 500 500'>
+    <g>
+      <polygon fill='#E8F3F7' points='262.167,129.75 307.667,102.75 317.167,145.25 364.167,119.75 361.167,160.75 390.167,157.75    385.667,180.25 415.167,189.75 389.167,221.75 420.167,240.75 391.167,263.75 413.167,290.75 392.167,304.25 416.167,336.75    381.667,344.25 393.667,376.75 346.667,361.25 342.667,393.25 297.667,367.25 281.667,387.75 262.667,361.75 230.667,389.75    213.167,356.75 167.167,385.25 162.667,350.25 103.167,360.25 122.667,328.75 74.167,319.25 109.667,289.75 76.667,256.75    119.167,237.25 83.667,199.75 124.167,188.75 105.167,149.25 142.167,147.25 136.167,120.75 179.167,136.25 182.667,103.75    219.167,129.25 235.667,104.75   '/>
+      <polygon fill='#FFFFFF' points='311.667,176 298.667,176 214.667,176 201.667,176 159,176 159,318 355,318 355,176   '/>
+      <polygon fill='#F5F4F2' points='311.667,176 298.667,176 214.667,176 201.667,176 159,176 159,208 355,208 355,176   '/>
+      <rect x='243' y='252' fill='#D1E6EE' width='84' height='22'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='159' y1='208' x2='355' y2='208'/>
+      <g>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='249.737' y1='251.633' x2='242.706' y2='258.664'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='255.675' y1='251.706' x2='242.742' y2='264.638'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='261.592' y1='251.799' x2='242.628' y2='270.763'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='267.565' y1='251.836' x2='245.696' y2='273.705'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='273.509' y1='251.903' x2='251.57' y2='273.841'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='279.638' y1='251.783' x2='257.606' y2='273.814'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='285.644' y1='251.789' x2='263.675' y2='273.758'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='291.648' y1='251.794' x2='269.586' y2='273.857'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='297.623' y1='251.83' x2='275.69' y2='273.763'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='303.565' y1='251.898' x2='281.821' y2='273.643'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='309.759' y1='251.716' x2='287.795' y2='273.68'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='315.7' y1='251.784' x2='293.707' y2='273.777'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='321.769' y1='251.726' x2='299.894' y2='273.602'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='326.774' y1='252.73' x2='305.743' y2='273.764'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='326.679' y1='258.836' x2='311.661' y2='273.855'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='326.722' y1='264.805' x2='317.909' y2='273.617'/>
+        <line fill='none' stroke='#A3CEDD' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='326.758' y1='270.778' x2='323.664' y2='273.873'/>
+      </g>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='159' y1='230' x2='355' y2='230'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='159' y1='252' x2='355' y2='252'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='159' y1='274' x2='355' y2='274'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='159' y1='296' x2='355' y2='296'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='187' y1='318' x2='187' y2='208'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='215' y1='318' x2='215' y2='208'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='243' y1='318' x2='243' y2='208'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='271' y1='318' x2='271' y2='208'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='299' y1='318' x2='299' y2='208'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='327' y1='318' x2='327' y2='208'/>
+      <polygon fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' points='311.667,176    298.667,176 214.667,176 201.667,176 159,176 159,318 355,318 355,176   '/>
+      <rect x='198' y='165' fill='#FFFFFF' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' width='10' height='20'/>
+      <rect x='306' y='165' fill='#FFFFFF' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' width='10' height='20'/>
+      <polygon fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' points='266.167,124.75    311.667,97.75 321.167,140.25 368.167,114.75 365.167,155.75 394.167,152.75 389.667,175.25 419.167,184.75 393.167,216.75    424.167,235.75 395.167,258.75 417.167,285.75 396.167,299.25 420.167,331.75 385.667,339.25 397.667,371.75 350.667,356.25    346.667,388.25 301.667,362.25 285.667,382.75 266.667,356.75 234.667,384.75 217.167,351.75 171.167,380.25 166.667,345.25    107.167,355.25 126.667,323.75 78.167,314.25 113.667,284.75 80.667,251.75 123.167,232.25 87.667,194.75 128.167,183.75    109.167,144.25 146.167,142.25 140.167,115.75 183.167,131.25 186.667,98.75 223.167,124.25 239.667,99.75   '/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='351.667' y1='96.75' x2='362.167' y2='73.25'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='362.167' y1='92.75' x2='379.167' y2='62.75'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='375.167' y1='89.75' x2='396.667' y2='67.25'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='383.167' y1='96.25' x2='397.667' y2='85.25'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='382.667' y1='110.25' x2='393.167' y2='105.25'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='113.167' y1='108.75' x2='87.667' y2='85.75'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='96.167' y1='114.75' x2='61.667' y2='97.25'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='90.167' y1='130.75' x2='61.667' y2='125.75'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='199.167' y1='392.25' x2='183.167' y2='429.75'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='205.667' y1='403.25' x2='195.167' y2='449.25'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='214.667' y1='411.75' x2='213.167' y2='447.25'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='224.667' y1='415.25' x2='228.667' y2='442.25'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='119' y1='382' x2='119' y2='396'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='126' y1='389' x2='112' y2='389'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='456' y1='137' x2='456' y2='151'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='463' y1='144' x2='449' y2='144'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='42' y1='144' x2='42' y2='154'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='47' y1='149' x2='37' y2='149'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='287' y1='57' x2='287' y2='67'/>
+      <line fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' x1='292' y1='62' x2='282' y2='62'/>
+      <path fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' d='M143.917,381.051
+        c-1.558-4.548-2.003-4.993-6.551-6.551c4.548-1.558,4.993-2.003,6.551-6.551c1.558,4.548,2.002,4.993,6.551,6.551
+        C145.919,376.058,145.475,376.503,143.917,381.051z'/>
+      <path fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' d='M65.084,187.75
+        c-3.899-11.387-5.014-12.502-16.4-16.4c11.386-3.899,12.501-5.014,16.4-16.4c3.898,11.387,5.014,12.501,16.4,16.4
+        C70.098,175.248,68.982,176.363,65.084,187.75z'/>
+      <rect x='138.667' y='74.75' transform='matrix(0.8968 0.4425 -0.4425 0.8968 48.7532 -54.4898)' fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' width='5' height='5'/>
+      <polygon fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' points='459.289,231.758    439.367,252.633 468.49,247.424 441.577,234.744 456.162,260.685   '/>
+      <circle fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' cx='284.667' cy='86.75' r='2'/>
+      <circle fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' cx='421.834' cy='149.917' r='5.5'/>
+      <circle fill='#FFFFFF' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' cx='166.834' cy='124.917' r='3.375'/>
+      <circle fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' cx='483' cy='237.417' r='2.333'/>
+      <circle fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' cx='129.167' cy='87.25' r='1.167'/>
+      <circle fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' cx='453.167' cy='307.25' r='1.5'/>
+      <circle fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' cx='136.334' cy='397.75' r='1.667'/>
+      <polygon fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' points='309.667,67.417    315.667,73.75 308.001,76.417   '/>
+      <polygon fill='none' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' points='424,115.75    417,120.75 424,123.75   '/>
+      <circle fill='#FFFFFF' stroke='#66ADC7' stroke-width='2' stroke-linejoin='bevel' stroke-mitrelimit='10' cx='249.834' cy='371.916' r='5.5'/>
+    </g>
+  </svg>

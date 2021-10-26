@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  width="500px" height="500px" viewBox="0 0 500 500" enableBackground="new 0 0 500 500" xml:space="preserve">
+  <g>
+    <path fill="#FFFFFF" d="M385,216v-28.129c0-18.53-14.806-33.862-33.336-33.862l-12.234,0.004L334.531,154h-202.38
+      c-8.123,0-16.434,2.948-22.151,7.818c-7.374,6.228-11.088,15.627-11.088,26.053V363.93L99,365h219v-62h90.367h0.54
+      C421.94,303,433,291.743,433,278.71V216H385z"/>
+    <circle fill="#F5F4F2" cx="154.34" cy="199.814" r="20.88"/>
+    <circle fill="#F5F4F2" cx="154.34" cy="262.814" r="20.88"/>
+    <circle fill="#F5F4F2" cx="154.34" cy="324.813" r="20.88"/>
+    <path fill="#F0F7F9" d="M433,216v62.71c0,13.033-11.06,24.29-24.093,24.29l-12.925-0.24c13.032,0,24.018-10.652,24.018-23.686V216
+      H433z"/>
+    <path fill="#F0F7F9" d="M408.907,302.895c-13.034,0-24.093-10.477-24.093-23.51v-91.514c0-18.53-14.62-33.862-33.15-33.862
+      l-12.85,0.044c18.529,0,33.149,15.021,33.149,33.551v91.646c0,13.033,11.06,23.509,24.093,23.509L408.907,302.895z"/>
+    <path fill="#F0F7F9" d="M318,364V187.604c0-18.53,14.708-33.561,33.239-33.561L334.531,154C316,154,301,169.074,301,187.604V364
+      H318z"/>
+    <g>
+      <path fill="#F5F4F2" d="M372,279.251v-91.646c0-16.414-11.488-30.065-26.99-32.972c-15.49,2.928-27.01,16.575-27.01,32.972V303h78
+        l0.075-0.24C383.041,302.76,372,292.284,372,279.251z"/>
+    </g>
+    <g>
+      <path fill="#F0F7F9" d="M132.151,154C113.619,154,99,169.341,99,187.871V363.93l17,0.07V187.604
+        c0-18.183,14.206-33.052,32.247-33.604C138.659,154,132.151,154,132.151,154z"/>
+    </g>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="70" y1="365" x2="375" y2="365"/>
+    <path fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" d="M396.058,302.76
+      c13.033,0,24.094-10.652,24.094-23.686v-62.915"/>
+    <path fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" d="M338.814,154.053
+      c18.529,0,33.149,15.021,33.149,33.551v91.646c0,13.033,11.06,23.509,24.093,23.509"/>
+    <path fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" d="M318,364V187.604
+      c0-18.53,14.708-33.561,33.239-33.561"/>
+    <path fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" d="M386,216h47v62.71
+      c0,13.033-11.06,24.29-24.093,24.29H318"/>
+    <g>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="309.858" cy="354.292" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="309.858" cy="341.442" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="309.858" cy="328.593" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="309.858" cy="315.743" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="309.858" cy="302.894" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="309.858" cy="290.044" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="309.858" cy="277.194" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="309.858" cy="264.345" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="309.858" cy="251.496" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="309.858" cy="238.646" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="309.858" cy="225.796" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="309.858" cy="212.947" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="309.858" cy="200.097" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="309.858" cy="187.248" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="312" cy="174.398" r="1.885"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="319.496" cy="163.69" r="1.712"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="329.133" cy="156.195" r="1.713"/>
+    </g>
+    <g>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="107.478" cy="354.292" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="107.478" cy="341.442" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="107.478" cy="328.593" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="107.478" cy="315.743" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="107.478" cy="302.894" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="107.478" cy="290.044" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="107.478" cy="277.194" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="107.478" cy="264.345" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="107.478" cy="251.496" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="107.478" cy="238.646" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="107.478" cy="225.796" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="107.478" cy="212.947" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="107.478" cy="200.097" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="107.478" cy="187.248" r="2.142"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="109.62" cy="174.398" r="1.884"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="117.115" cy="163.69" r="1.713"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="126.752" cy="156.195" r="1.713"/>
+    </g>
+    <path fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" d="M301,364V187.604
+      c0-18.53,15-33.604,33.531-33.604H149.284C130.752,154,116,169.074,116,187.604V364"/>
+    <path fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" d="M98.912,363.93V187.871
+      c0-18.53,14.708-33.818,33.24-33.818c0,0,64.202,0,86.689,0l132.823-0.044c18.53,0,33.15,15.332,33.15,33.862v91.514
+      c0,13.033,11.059,23.51,24.093,23.51"/>
+    <g>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="378.39" cy="192.602" r="1.713"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="378.39" cy="203.31" r="1.713"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="378.39" cy="214.018" r="1.713"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="378.39" cy="224.726" r="1.713"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="378.39" cy="235.434" r="1.713"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="378.39" cy="246.142" r="1.713"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="378.39" cy="256.85" r="1.713"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="378.39" cy="267.559" r="1.713"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="378.39" cy="278.266" r="1.713"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="380.531" cy="288.974" r="1.542"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="386.956" cy="296.469" r="1.249"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="377.925" cy="182.5" r="1.713"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="374.712" cy="172.863" r="1.542"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="369.358" cy="165.368" r="1.123"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="362.934" cy="160.014" r="0.91"/>
+    </g>
+    <g>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="426.45" cy="224.726" r="1.712"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="426.45" cy="235.434" r="1.712"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="426.45" cy="246.142" r="1.712"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="426.45" cy="256.851" r="1.712"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="426.45" cy="267.558" r="1.712"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="426.45" cy="278.267" r="1.712"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="424.308" cy="288.974" r="1.542"/>
+      <circle fill="none" stroke="#B2D6E3" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="417.883" cy="296.469" r="1.249"/>
+    </g>
+    <g>
+      <g>
+        <defs>
+          <circle id="SVGID_1_" cx="158.34" cy="257.92" r="20.88"/>
+        </defs>
+        <clipPath id="SVGID_2_">
+          <use xlink:href="#SVGID_1_"  overflow="visible"/>
+        </clipPath>
+        <g clip-path="url(#SVGID_2_)">
+          <polyline fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" points="
+            179.87,244.535 158.791,262.465 137.71,244.535 				"/>
+          <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="136.432" y1="275.589" x2="151.338" y2="255.977"/>
+          <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="182.391" y1="275.589" x2="167.485" y2="255.977"/>
+        </g>
+      </g>
+    </g>
+    <circle fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="158.34" cy="257.92" r="20.88"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="191" y1="260" x2="256" y2="260"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="191" y1="248" x2="198" y2="248"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="202" y1="248" x2="209" y2="248"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="191" y1="268" x2="273" y2="268"/>
+    <g>
+      <g>
+        <defs>
+          <circle id="SVGID_3_" cx="158.34" cy="321.098" r="20.88"/>
+        </defs>
+        <clipPath id="SVGID_4_">
+          <use xlink:href="#SVGID_3_"  overflow="visible"/>
+        </clipPath>
+        <g clip-path="url(#SVGID_4_)">
+          <polyline fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" points="
+            179.87,307.712 158.791,325.643 137.71,307.712 				"/>
+          <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="136.432" y1="338.766" x2="151.338" y2="319.152"/>
+          <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="182.391" y1="338.766" x2="167.485" y2="319.152"/>
+        </g>
+      </g>
+    </g>
+    <circle fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="158.34" cy="321.098" r="20.88"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="190" y1="323" x2="264" y2="323"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="190" y1="339" x2="264" y2="339"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="190" y1="311" x2="197" y2="311"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="201" y1="311" x2="208" y2="311"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="211" y1="311" x2="219" y2="311"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="190" y1="331" x2="253" y2="331"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="385" y1="251" x2="411" y2="251"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="385" y1="267" x2="406" y2="267"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="385" y1="259" x2="400" y2="259"/>
+    <g>
+      <g>
+        <defs>
+          <circle id="SVGID_5_" cx="158.34" cy="195.814" r="20.88"/>
+        </defs>
+        <clipPath id="SVGID_6_">
+          <use xlink:href="#SVGID_5_"  overflow="visible"/>
+        </clipPath>
+        <g clip-path="url(#SVGID_6_)">
+          <polyline fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" points="
+            179.87,182.429 158.791,200.359 137.71,182.429 				"/>
+          <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="136.432" y1="213.482" x2="151.338" y2="193.87"/>
+          <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="182.391" y1="213.482" x2="167.485" y2="193.87"/>
+        </g>
+      </g>
+    </g>
+    <circle fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" cx="158.34" cy="195.814" r="20.88"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="193" y1="196" x2="254" y2="196"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="193" y1="212" x2="220" y2="212"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="193" y1="184" x2="201" y2="184"/>
+    <line fill="none" stroke="#66ADC7" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" x1="193" y1="204" x2="266" y2="204"/>
+  </g>
+</svg>

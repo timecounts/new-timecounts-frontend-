@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Avatar from "@mui/material/Avatar"
 import stringAvatar from '../../utils/stringAvatar'
 import * as ActionCreators from '../../../application/actions'
+import { NotificationContainer, NotificationManager } from 'react-notifications'
 
 import Logo from '../../assets/images/company-logo.svg'
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
@@ -19,7 +20,7 @@ const LoggedSimpleHeader = ({ tokens, logout }) => {
         })
     }
 
-    return <div class="header-wrap">
+    return <div className="header-wrap">
         <div className="header">
             <nav>
                 <img
@@ -27,7 +28,13 @@ const LoggedSimpleHeader = ({ tokens, logout }) => {
                     alt="Company Logo"
                 />
                 <div className="profile-info" onClick={() => setShowDropdown(previousState => !previousState)}>
-                    <Avatar {...stringAvatar(tokens.userData.username)} />
+                    {
+                        tokens.userData.pictureUrl ? (
+                            <Avatar src={tokens.userData.pictureUrl} />
+                        ) : (
+                            <Avatar {...stringAvatar(tokens.userData.username)} />
+                        )
+                    }
                 </div>
                 <div className={`profile-dropdown ${showDropdown && 'active'}`}>
                     <div className="row">
@@ -42,25 +49,50 @@ const LoggedSimpleHeader = ({ tokens, logout }) => {
                         </div>
                     </div>
                     <ul>
-                        <li>
-                            <Link to="#" style={{ display: 'flex', alignItems: 'center' }}>
+                        <li 
+                            style={{
+                                cursor: 'pointer'
+                            }}
+                        >
+                            <Link 
+                                to="/organization/creation" 
+                                style={{ 
+                                    display: 'flex', 
+                                    alignItems: 'center' 
+                                }}
+                            >
                                 <AddOutlinedIcon />
                                 Create Link New Organization
                             </Link>
                         </li>
-                        <li>
+                        <li
+                            style={{
+                                cursor: 'pointer'
+                            }}
+                        >
                             <Link to="#">Edit Profile</Link>
                         </li>
-                        <li>
+                        <li
+                            style={{
+                                cursor: 'pointer'
+                            }}
+                        >
                             <Link to="#">Help Center</Link>
                         </li>
-                        <li>
-                            <Link to="#" onClick={handleLogout}>Sign Out</Link>
+                        <li 
+                            onClick={handleLogout}
+                            style={{
+                                cursor: 'pointer'
+                            }}
+                        >
+                            <Link to="#">Sign Out</Link>
                         </li>
                     </ul>
                 </div>
             </nav>
         </div>
+
+        <NotificationContainer />
     </div>
 }
 
@@ -72,7 +104,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        logout: requestBody => dispatch(ActionCreators.logout(requestBody))
+        logout: requestBody => dispatch(ActionCreators.logout(requestBody)),
     }
 }
 

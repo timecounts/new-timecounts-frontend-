@@ -49,7 +49,7 @@ const CreationRequestPending = ({
                                         }}
                                         onClick={() => history.push('/')}
                                     >
-                                        Back to Dashbaord
+                                        Back to Dashboard
                                     </div>
                                 </div>
                             </div>

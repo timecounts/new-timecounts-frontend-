@@ -3,16 +3,16 @@ import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { NotificationContainer, NotificationManager } from 'react-notifications'
 import * as ActionCreators from '../../../application/actions'
-
-import CreateReportsIcon from '../../assets/images/create-reports.svg'
-import TrackVolunteerTimeIcon from '../../assets/images/track-volunteer-time.svg'
-import ManageAVolunteerDatabaseIcon from '../../assets/images/manage-a-volunteer-database.svg'
-import CustomizeSignupFormsIcon from '../../assets/images/customize-signup-forms.svg'
-import CommunicateWithVolunteersIcon from '../../assets/images/communicate-with-volunteers.svg'
-import CreateVolunteerEventsIcon from '../../assets/images/create-volunteer-events.svg'
-import PublishOngoingSchedulesIcon from '../../assets/images/publish-ongoing-schedules.svg'
-import CreateApplicationsIcon from '../../assets/images/create-applications.svg'
 import LoggedSimpleHeader from '../../components/common/LoggedSimpleHeader'
+
+import CreateReportsIcon from '../../assets/images/svg/illustrations/monthly-reporting.svg'
+import TrackVolunteerTimeIcon from '../../assets/images/svg/illustrations/credit-report.svg'
+import ManageAVolunteerDatabaseIcon from '../../assets/images/svg/illustrations/top-people.svg'
+import CustomizeSignupFormsIcon from '../../assets/images/svg/illustrations/assignment-report.svg'
+import CommunicateWithVolunteersIcon from '../../assets/images/svg/illustrations/engagement.svg'
+import CreateVolunteerEventsIcon from '../../assets/images/svg/illustrations/attendance.svg'
+import PublishOngoingSchedulesIcon from '../../assets/images/svg/illustrations/create-event.svg'
+import CreateApplicationsIcon from '../../assets/images/svg/illustrations/applications.svg'
 
 const GoalSelection = ({
     dataOrganizationName,

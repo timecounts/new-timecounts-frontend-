@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { NotificationContainer, NotificationManager } from 'react-notifications'
 import * as ActionCreators from '../../../application/actions'
 import LoggedSimpleHeader from '../../components/common/LoggedSimpleHeader'
+import areas from '../../utils/organization_areas'
 
 const AreaSelection = ({
     dataAreas, 
@@ -14,27 +15,34 @@ const AreaSelection = ({
     flushAuthState
 }) => {
 
+    const [actualAreaList, setActualAreaList] = useState(areas)
     const history = useHistory()
-    const [notSelectedList, setNotSelectedList] = useState([
-        'Cinematography',
-        'Food',
-        'Animals',
-        'Arts and Culture',
-        'Children and Youth',
-        'Community'
-    ])
+    const [search, setSearch] = useState('')
+    const [notSelectedList, setNotSelectedList] = useState(areas.slice(1, 9))
     const [selectedList, setSelectedList] = useState(dataAreas.length === 0 ? [] : dataAreas)
 
     const handleNextStep = e => {
         e.preventDefault()
 
         if (selectedList.length !== 0) {
-            organizationDataStep3(selectedList)
+            const list = selectedList.map(item => item.item)
+            organizationDataStep3(list)
             history.push('/organization/goal')
         } else {
             NotificationManager.error('You must select atleast one area.', 'Selection Warning', 5000)
         }
     }
+
+    useEffect(() => {
+        console.log(selectedList)
+    }, [selectedList])
+
+    useEffect(() => {
+        if (search.length > 1) {
+            setNotSelectedList(actualAreaList
+                .filter(item => item.text.toLowerCase().match(search.toLowerCase())))
+        }
+    }, [search])
 
     useEffect(() => {
         const newNotSelectedList = notSelectedList.filter(i => !selectedList.includes(i))
@@ -70,28 +78,31 @@ const AreaSelection = ({
                                         <form>
                                             <div className="select-box">
                                                 <div className="add-form-control">
-                                                    <input 
+                                                    <input
                                                         type="text" 
                                                         className="form-text" 
+                                                        value={search}
+                                                        onChange={e => setSearch(e.target.value)}
                                                         placeholder=" Search for a activity"
                                                     />
                                                 </div>
                                                 <div className="add-tag">
                                                     <ul>
                                                         {
-                                                            notSelectedList.map((area, index) => (
+                                                            notSelectedList.map(area => (
                                                                 <li 
-                                                                    key={index}
+                                                                    key={area.value}
                                                                     style={{
                                                                         margin: '5px',
                                                                         cursor: 'pointer'
                                                                     }}
                                                                     onClick={e => {
-                                                                        setNotSelectedList(notSelectedList.filter((a, i) => i !== index))
+                                                                        setActualAreaList(actualAreaList.filter(a => a.item !== area.item))
+                                                                        setNotSelectedList(notSelectedList.filter(a => a.item !== area.item))
                                                                         setSelectedList([...selectedList, area])
                                                                     }}
                                                                 >
-                                                                    {area}
+                                                                    {area.text}
                                                                 </li>
                                                             ))
                                                         }
@@ -104,19 +115,20 @@ const AreaSelection = ({
                                                 <div className="focus-tag">
                                                     <ul>
                                                         {
-                                                            selectedList.map((area, index) => (
+                                                            selectedList.map(area => (
                                                                 <li
-                                                                    key={index}
+                                                                    key={area.value}
                                                                     style={{
                                                                         margin: '5px',
                                                                         cursor: 'pointer'
                                                                     }}
                                                                     onClick={e => {
-                                                                        setSelectedList(selectedList.filter((a, i) => i !== index))
+                                                                        setSelectedList(selectedList.filter(a => a.item !== area.item))
                                                                         setNotSelectedList([...notSelectedList, area])
+                                                                        setActualAreaList([...actualAreaList, area])
                                                                     }}
                                                                 >
-                                                                    {area}
+                                                                    {area.text}
                                                                 </li>
                                                             ))
                                                         }
