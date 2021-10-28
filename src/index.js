@@ -7,6 +7,7 @@ import App from './App'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 import './responsive.css'
+import './App.css'
 import 'react-notifications/lib/notifications.css'
 
 ReactDOM.render(

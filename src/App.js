@@ -15,6 +15,7 @@ import AreaSelection from './view/pages/organization/AreaSelection'
 import GoalSelection from './view/pages/organization/GoalSelection'
 import CreationRequestPending from './view/pages/organization/CreationRequestPending'
 import Dashboard from './view/pages/dashboard'
+import ProfileUpdate from './view/pages/profile-update'
 
 function App({ userTokens, loading, error }) {
 
@@ -29,6 +30,9 @@ function App({ userTokens, loading, error }) {
                 {
                     !tokens.success ? (
                         <Switch>
+                            
+                            {/* <Route path='/profile-update' component={ProfileUpdate} /> */}
+
                             <Route path='/email-confirmed/:emailId' component={EmailConfirmed} />
                             <Route path='/email-resent/:emailId/' component={ResentEmail} />
                             <Route path='/confirm-your-email/:emailId' component={ConfirmYourEmail} />

@@ -1665,6 +1665,10 @@ transform: translateY(-50%);
 @media (min-width: 1200px){
   .v-log-time,.v-opportunities{
     font-size:14PX;
+    width: 16.25em;
+}
+.v-profile-heading{
+  width:200px;
 }
 .v-profile-heading h2{
     font-size: 35px;
@@ -1758,4 +1762,3 @@ transform: translateY(-50%);
     width: 32.9167%;
   }
 }
-

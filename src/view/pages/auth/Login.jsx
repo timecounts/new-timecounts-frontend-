@@ -84,8 +84,7 @@ const Login = ({ login, googleLogin, facebookLogin, flushAuthState, userTokens, 
                 <div className="sw-content">
                     <h1>Log in</h1>
                     <form>
-
-                        <SocialButton
+                        {/* <SocialButton
                             provider="google"
                             appId="658889701022-vkbqi7g6jcaj14uppe0g34vpaipnpp1b.apps.googleusercontent.com"
                             onLoginSuccess={handleGoogleLogin}
@@ -107,7 +106,7 @@ const Login = ({ login, googleLogin, facebookLogin, flushAuthState, userTokens, 
                                 <img src={FacebookIcon} alt={`Facebook Icon`} />
                                 <span>Log in with Facebook</span>
                             </div>
-                        </SocialButton>
+                        </SocialButton> */}
 
                         <SignupLoginButton
                             type='Log in'

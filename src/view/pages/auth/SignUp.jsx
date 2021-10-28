@@ -101,8 +101,7 @@ const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loa
                 <div className="sw-content">
                     <h1>Join Timecounts</h1>
                     <form>
-
-                        <SocialButton
+                        {/* <SocialButton
                             provider="google"
                             appId="658889701022-vkbqi7g6jcaj14uppe0g34vpaipnpp1b.apps.googleusercontent.com"
                             onLoginSuccess={handleGoogleSignup}
@@ -124,7 +123,7 @@ const SignUp = ({ signup, googleSignup, facebookSignup, userTokens, message, loa
                                 <img src={FacebookIcon} alt={`Facebook Icon`} />
                                 <span>Sign up with Facebook</span>
                             </div>
-                        </SocialButton>
+                        </SocialButton> */}
 
                         <SignupLoginButton
                             type='Sign up'

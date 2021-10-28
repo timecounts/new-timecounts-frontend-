@@ -18,7 +18,7 @@ const AreaSelection = ({
     const [actualAreaList, setActualAreaList] = useState(areas)
     const history = useHistory()
     const [search, setSearch] = useState('')
-    const [notSelectedList, setNotSelectedList] = useState(areas.slice(1, 9))
+    const [notSelectedList, setNotSelectedList] = useState(areas.slice(1, 10))
     const [selectedList, setSelectedList] = useState(dataAreas.length === 0 ? [] : dataAreas)
 
     const handleNextStep = e => {
@@ -34,13 +34,11 @@ const AreaSelection = ({
     }
 
     useEffect(() => {
-        console.log(selectedList)
-    }, [selectedList])
-
-    useEffect(() => {
         if (search.length > 1) {
             setNotSelectedList(actualAreaList
                 .filter(item => item.text.toLowerCase().match(search.toLowerCase())))
+        } else {
+            setNotSelectedList(actualAreaList.slice(1, 10))
         }
     }, [search])
 

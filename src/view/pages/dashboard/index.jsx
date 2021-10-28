@@ -46,7 +46,6 @@ const Dashboard = ({
                                             src={tokens.userData.pictureUrl}
                                             style={{
                                                 margin: '0 auto 30px',
-                                                padding: '1rem',
                                                 display: 'block',
                                                 width: '4rem',
                                                 height: '4rem'

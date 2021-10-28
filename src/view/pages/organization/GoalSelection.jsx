@@ -114,7 +114,7 @@ const GoalSelection = ({
             history.push('/organization/category')
         } else if (dataAreas.length === 0) {
             history.push('/organization/area')
-        } else if (selectedList.length !== 0) {
+        } else if (selectedList.length === 0) {
             NotificationManager.error('You must select atleast one Goal', 'Selection Error', 5000)
         }
     }
