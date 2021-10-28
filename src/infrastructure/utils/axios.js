@@ -3,7 +3,8 @@ import store from '../../application/store'
 import * as ActionCreators from '../../application/actions'
 
 const api = axios.create({
-    baseURL: 'http://localhost:5000/api/v1/',
+    // baseURL: 'http://localhost:5000/api/v1/',
+    baseURL: 'http://54.175.46.198:5000/api/v1/',
     headers: {
         "Content-Type": "application/json",
     },
